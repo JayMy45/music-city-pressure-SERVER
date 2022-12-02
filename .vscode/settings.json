@@ -4,5 +4,11 @@
         "--django-settings-module=musiccitypressure.settings",
     ],
     "python.linting.pylintEnabled": true,
-    "python.linting.enabled": true
+    "python.linting.enabled": true,
+    "cSpell.words": [
+        "authtoken",
+        "corsheaders",
+        "mcpressureapi",
+        "musiccitypressure"
+    ]
 }
