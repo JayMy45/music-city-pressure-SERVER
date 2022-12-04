@@ -5,5 +5,5 @@ class ServiceType(models.Model):
     description = models.CharField(max_length=200)
     location = models.ForeignKey("Location", on_delete=models.CASCADE)
     price = models.FloatField()
-    tools = models.ManyToManyField('Equipment', blank=True, through='ServiceTypeEquipment')
+    equipment_id = models.ForeignKey('Equipment', blank=True, on_delete=models.CASCADE)
     name =  models.CharField(max_length=75)

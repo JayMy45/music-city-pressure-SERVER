@@ -9,6 +9,9 @@
         "authtoken",
         "corsheaders",
         "mcpressureapi",
-        "musiccitypressure"
+        "musiccitypressure",
+        "servicecall",
+        "servicetype",
+        "servicetypeequipment"
     ]
 }

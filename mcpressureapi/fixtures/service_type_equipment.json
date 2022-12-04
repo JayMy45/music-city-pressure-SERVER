@@ -1,0 +1,18 @@
+[
+    {
+        "model": "mcpressureapi.servicetypeequipment",
+        "pk": 1,
+        "fields": {
+            "equipment_id": 3,
+            "service_type_id": 1
+        }
+    },
+    {
+        "model": "mcpressureapi.servicetypeequipment",
+        "pk": 2,
+        "fields": {
+            "equipment_id": 1,
+            "service_type_id": 1
+        }
+    }
+]

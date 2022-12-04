@@ -1,0 +1,15 @@
+[
+    {
+        "model": "mcpressureapi.servicecall",
+        "pk": 1,
+        "fields": {
+            "employee": 1,
+            "customer": 1,
+            "service_type": 1,
+            "request_date": "2022-10-23",
+            "date_completed": "2022-11-07",
+            "consultation": false,
+            "completed": false
+        }
+    }
+]

@@ -1,0 +1,11 @@
+[
+    {
+        "model": "mcpressureapi.customer",
+        "pk": 1,
+        "fields": {
+            "user": 1,
+            "phone_number": "1234567890",
+            "address": "1544 RoundWay Rd."
+        }
+    }
+]

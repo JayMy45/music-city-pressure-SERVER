@@ -9,7 +9,7 @@ class Employee(models.Model):
     salary = models.FloatField()
     specialty = models.CharField(max_length=155)
 
-    is_Staff = models.BooleanField()
+    is_Staff = models.BooleanField(default=True)
 
     @property
     def full_name(self):

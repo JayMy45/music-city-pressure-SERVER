@@ -1,0 +1,14 @@
+[
+    {
+        "model": "mcpressureapi.servicetype",
+        "pk": 1,
+        "fields": {
+            "label": "scheduled",
+            "description": "Using pressure to wash grim and debris from sidewalks",
+            "location_id": 1,
+            "price": 250,
+            "equipment_id": 1,
+            "name": "Power Wash"
+        }
+    }
+]
