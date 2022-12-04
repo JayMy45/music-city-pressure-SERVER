@@ -12,6 +12,7 @@
         "musiccitypressure",
         "servicecall",
         "servicetype",
-        "servicetypeequipment"
+        "servicetypeequipment",
+        "viewsets"
     ]
 }
