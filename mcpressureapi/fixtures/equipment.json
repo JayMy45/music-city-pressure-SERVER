@@ -1,0 +1,30 @@
+[
+    {
+        "model": "mcpressureapi.equipment",
+        "pk": 1,
+        "fields": {
+            "label": "Power Wash"
+        }
+    },
+    {
+        "model": "mcpressureapi.equipment",
+        "pk": 2,
+        "fields": {
+            "label": "Acid"
+        }
+    },
+    {
+        "model": "mcpressureapi.equipment",
+        "pk": 3,
+        "fields": {
+            "label": "Soft Wash"
+        }
+    },
+    {
+        "model": "mcpressureapi.equipment",
+        "pk": 4,
+        "fields": {
+            "label": "Moss Reducer"
+        }
+    }
+]

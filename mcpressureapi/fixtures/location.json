@@ -1,0 +1,9 @@
+[
+    {
+        "model": "mcpressureapi.location",
+        "pk": 1,
+        "fields": {
+            "label": "Brentwood"
+        }
+    }
+]

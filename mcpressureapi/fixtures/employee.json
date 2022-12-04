@@ -1,0 +1,14 @@
+[
+    {
+        "model": "mcpressureapi.employee",
+        "pk": 1,
+        "fields": {
+            "user": 1,
+            "bio": "Me",
+            "address": "1544 RoundWay Rd.",
+            "date_hired": "2020-08-28",
+            "salary": "100000",
+            "specialty": "Power Washing"
+        }
+    }
+]
