@@ -17,11 +17,11 @@ from django.contrib import admin
 from django.conf.urls import include
 from django.urls import path
 from rest_framework import routers
-from mcpressureapi.views import register_user, login_user, ServiceCallView
+from mcpressureapi.views import register_user, login_user, AppointmentView
 
 
 router = routers.DefaultRouter(trailing_slash=False)
-router.register(r'calls', ServiceCallView, 'call')
+router.register(r'appointments', AppointmentView, 'call')
 
 urlpatterns = [
     path('register', register_user),
