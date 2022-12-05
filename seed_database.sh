@@ -13,6 +13,6 @@ python3 manage.py loaddata location
 python3 manage.py loaddata progress
 python3 manage.py loaddata equipment
 python3 manage.py loaddata service_type
-python3 manage.py loaddata service_call
+python3 manage.py loaddata appointments
 python3 manage.py loaddata reviews
 python3 manage.py loaddata service_type_equipment

@@ -1,6 +1,6 @@
 [
     {
-        "model": "mcpressureapi.servicecall",
+        "model": "mcpressureapi.appointments",
         "pk": 1,
         "fields": {
             "employee": 1,
@@ -13,7 +13,7 @@
         }
     },
     {
-        "model": "mcpressureapi.servicecall",
+        "model": "mcpressureapi.appointments",
         "pk": 2,
         "fields": {
             "employee": 1,
@@ -26,7 +26,7 @@
         }
     },
     {
-        "model": "mcpressureapi.servicecall",
+        "model": "mcpressureapi.appointments",
         "pk": 3,
         "fields": {
             "employee": 1,

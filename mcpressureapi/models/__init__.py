@@ -1,6 +1,6 @@
 from .customer import Customer
 from .employee import Employee
-from .service_call import ServiceCall
+from .appointment import Appointments
 from .progress import Progress
 from .service_type import ServiceType
 from .location import Location
