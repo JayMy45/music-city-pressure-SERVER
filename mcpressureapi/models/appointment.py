@@ -9,6 +9,7 @@ class Appointments(models.Model):
     date_completed = models.DateField(null=True, blank=True, auto_now=False, auto_now_add=False)
     consultation = models.BooleanField(default=False)
     completed = models.BooleanField(default=False) 
+    request_details = models.CharField(max_length=200)
     
     # on the fence about locations...
     # location = models.ForeignKey("Location", on_delete=models.CASCADE)

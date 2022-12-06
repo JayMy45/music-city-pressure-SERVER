@@ -45,6 +45,7 @@ class AppointmentView(ViewSet):
             service_type=service_type,
             request_date=request.data["request_date"],
             date_completed=request.data["date_completed"],
+            request_details=request.data["request_details"],
             consultation= False,
             completed=False,
         )
@@ -55,4 +56,4 @@ class AppointmentView(ViewSet):
 class AppointmentsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Appointments
-        fields = ('id', 'service_type','completed', 'consultation', )
+        fields = ('id', 'service_type','completed', 'consultation', 'request_details', )
