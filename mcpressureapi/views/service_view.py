@@ -9,10 +9,10 @@ class ServiceTypeView(ViewSet):
     """Honey Rae API ServiceTicket view"""
      
     def list(self, request):
-        """Handle GET requests to get all customers
+        """Handle GET requests to get all services
 
         Returns:
-            Response -- JSON serialized list of customers
+            Response -- JSON serialized list of services
         """
 
         service = ServiceType.objects.all()
@@ -20,10 +20,10 @@ class ServiceTypeView(ViewSet):
         return Response(serialized.data, status=status.HTTP_200_OK)
 
     def retrieve(self, request, pk=None):
-        """Handle GET requests for single customer
+        """Handle GET requests for single service 
 
         Returns:
-            Response -- JSON serialized customer record
+            Response -- JSON serialized service
         """
         service = ServiceType.objects.get(pk=pk)
         serialized = ServiceTypeSerializer(service, context={'request': request})
@@ -34,4 +34,4 @@ class ServiceTypeView(ViewSet):
 class ServiceTypeSerializer(serializers.ModelSerializer):
     class Meta:
         model = ServiceType
-        fields = ('id', 'label',)
+        fields = ('id', 'name','description', 'details',)
