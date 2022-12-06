@@ -9,8 +9,7 @@
             "request_date": "2022-10-23",
             "date_completed": "2022-11-07",
             "consultation": false,
-            "completed": false,
-            "location_id": 1
+            "completed": false
         }
     },
     {
@@ -23,8 +22,7 @@
             "request_date": "2022-10-23",
             "date_completed": "2022-11-07",
             "consultation": true,
-            "completed": false,
-            "location_id": 1
+            "completed": false
         }
     },
     {
@@ -37,8 +35,7 @@
             "request_date": "2022-10-23",
             "date_completed": "2022-11-07",
             "consultation": false,
-            "completed": true,
-            "location_id": 1
+            "completed": true
         }
     }
 ]

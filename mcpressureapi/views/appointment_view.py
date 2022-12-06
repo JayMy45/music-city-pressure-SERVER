@@ -55,4 +55,4 @@ class AppointmentView(ViewSet):
 class AppointmentsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Appointments
-        fields = ('id', 'completed', )
+        fields = ('id', 'service_type','completed', 'consultation', )
