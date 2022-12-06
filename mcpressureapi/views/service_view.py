@@ -19,6 +19,17 @@ class ServiceTypeView(ViewSet):
         serialized = ServiceTypeSerializer(service, many=True)
         return Response(serialized.data, status=status.HTTP_200_OK)
 
+    def retrieve(self, request, pk=None):
+        """Handle GET requests for single customer
+
+        Returns:
+            Response -- JSON serialized customer record
+        """
+        service = ServiceType.objects.get(pk=pk)
+        serialized = ServiceTypeSerializer(service, context={'request': request})
+        return Response(serialized.data, status=status.HTTP_200_OK)
+
+
 
 class ServiceTypeSerializer(serializers.ModelSerializer):
     class Meta:
