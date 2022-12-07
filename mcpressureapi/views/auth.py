@@ -68,7 +68,7 @@ def register_user(request):
                 )
         elif account_type == 'employee':
             specialty = request.data.get('specialty', None)
-            if specialty is None:
+            if specialty and phone_number is None:
                 return Response(
                     {'message': 'You must provide a specialty for an employee'},
                     status=status.HTTP_400_BAD_REQUEST
@@ -111,6 +111,9 @@ def register_user(request):
 
             account = Employee.objects.create(
                 specialty=request.data['specialty'],
+                address=request.data['address'],
+                phone_number=request.data['phone_number'],
+                salary=request.data['salary'],
                 user=new_user
             )
 
