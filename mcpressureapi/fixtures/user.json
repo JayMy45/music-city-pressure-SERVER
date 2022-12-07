@@ -12,7 +12,25 @@
             "email": "name@domain.com",
             "is_staff": false,
             "is_active": true,
-            "date_joined": "2020-08-28T14:51:39.989Z",
+            "date_joined": "2020-08-28T21:15:55.764Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 2,
+        "fields": {
+            "password": "pbkdf2_sha256$390000$mCClhMmw0Ewyg0ClNumGrR$t00+fL6V8axmtvX5vHjDNQEYMjADyDAUr6Vqpvtenps=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "jam",
+            "first_name": "James",
+            "last_name": "Sights",
+            "email": "james@dsights.com",
+            "is_staff": true,
+            "is_active": true,
+            "date_joined": "2022-12-07T21:16:33.812Z",
             "groups": [],
             "user_permissions": []
         }

@@ -6,7 +6,7 @@ from rest_framework import serializers, status
 from mcpressureapi.models import ServiceType
 
 class ServiceTypeView(ViewSet):
-    """Honey Rae API ServiceTicket view"""
+    """Music City Pressure API ServiceTicket view"""
      
     def list(self, request):
         """Handle GET requests to get all services

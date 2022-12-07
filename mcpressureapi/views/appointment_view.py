@@ -6,27 +6,27 @@ from rest_framework import serializers, status
 from mcpressureapi.models import Appointments, Customer, Employee, ServiceType
 
 class AppointmentView(ViewSet):
-    """Honey Rae API ServiceTicket view"""
+    """Music City Pressure API Appointment view"""
      
     def list(self, request):
-        """Handle GET requests to get all customers
+        """Handle GET requests to get all Appointments
 
         Returns:
-            Response -- JSON serialized list of customers
+            Response -- JSON serialized list of appointments
         """
 
-        service_call = Appointments.objects.all()
-        serialized = AppointmentsSerializer(service_call, many=True)
+        appointments = Appointments.objects.all()
+        serialized = AppointmentsSerializer(appointments, many=True)
         return Response(serialized.data, status=status.HTTP_200_OK)
 
     def retrieve(self, request, pk=None):
-        """Handle GET requests for single customer
+        """Handle GET requests for single Appointment
 
         Returns:
-            Response -- JSON serialized customer record
+            Response -- JSON serialized appointment record
         """
-        service_call = Appointments.objects.get(pk=pk)
-        serialized = AppointmentsSerializer(service_call, context={'request': request})
+        appointment = Appointments.objects.get(pk=pk)
+        serialized = AppointmentsSerializer(appointment, context={'request': request})
         return Response(serialized.data, status=status.HTTP_200_OK)
 
     def create(self, request):
@@ -53,7 +53,14 @@ class AppointmentView(ViewSet):
         serializer = AppointmentsSerializer(appointment)
         return Response(serializer.data)
         
+class ServiceTypeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ServiceType
+        fields = ('id', 'name','description',)
+
 class AppointmentsSerializer(serializers.ModelSerializer):
+    service_type = ServiceTypeSerializer(many=False)
+
     class Meta:
         model = Appointments
-        fields = ('id', 'service_type','completed', 'consultation', 'request_details', )
+        fields = ('id', 'service_type','completed', 'consultation', 'request_details', 'request_date', )
