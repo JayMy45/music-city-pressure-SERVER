@@ -59,7 +59,7 @@ def register_user(request):
         and password is not None:
 
         if account_type == 'customer':
-            address = request.data.get('address', None)
+            address = request.data.get('address', None),
             phone_number = request.data.get('phone_number', None)
             if address and phone_number is None:
                 return Response(
@@ -67,8 +67,11 @@ def register_user(request):
                     status=status.HTTP_400_BAD_REQUEST
                 )
         elif account_type == 'employee':
-            specialty = request.data.get('specialty', None)
-            if specialty and phone_number is None:
+            specialty = request.data.get('specialty', None),
+            phone_number = request.data.get('phone_number', None),
+            salary = request.data.get('salary', None),
+            address = request.data.get('address', None)
+            if specialty and phone_number and salary and address is None:
                 return Response(
                     {'message': 'You must provide a specialty for an employee'},
                     status=status.HTTP_400_BAD_REQUEST
