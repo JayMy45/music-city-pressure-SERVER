@@ -3,6 +3,7 @@ from django.http import HttpResponseServerError
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
+from django.contrib.auth.models import User
 from mcpressureapi.models import Appointments, Customer, Employee, ServiceType
 
 class AppointmentView(ViewSet):
@@ -35,24 +36,50 @@ class AppointmentView(ViewSet):
         Returns
             Response -- JSON serialized game instance
         """
-        employee = Employee.objects.get(user=request.auth.user)
-        customer = Customer.objects.get(pk=request.data["customer"])
-        service_type = ServiceType.objects.get(pk=request.data["service_type"])
+        
+        # if employee is creating an appointment then the employee will be assigned to the that appt.
+        user = User.objects.get(pk=request.auth.user_id)
+        if user.is_staff:
+            employee = Employee.objects.get(user=request.auth.user)
+            customer = Customer.objects.get(pk=request.data["customer"])
+            service_type = ServiceType.objects.get(pk=request.data["service_type"])
 
-        appointment = Appointments.objects.create(
-            employee=employee,
-            customer=customer,
-            service_type=service_type,
-            request_date=request.data["request_date"],
-            date_completed=request.data["date_completed"],
-            request_details=request.data["request_details"],
-            consultation= False,
-            completed=False,
-        )
+            appointment = Appointments.objects.create(
+                employee=employee,
+                customer=customer,
+                service_type=service_type,
+                request_date=request.data["request_date"],
+                request_details=request.data["request_details"],
+                consultation= False,
+                completed=False,
+            )
+        # if customer is creating an appointment then an employee wont be assigned
+        else:
+            customer = Customer.objects.get(user=request.auth.user)
+            service_type = ServiceType.objects.get(pk=request.data["service_type"])
+
+            appointment = Appointments.objects.create(
+                customer=customer,
+                service_type=service_type,
+                request_date=request.data["request_date"],
+                request_details=request.data["request_details"],
+                consultation= False,
+                completed=False,
+            )
+    
+        
 
         serializer = AppointmentsSerializer(appointment)
-        return Response(serializer.data)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
         
+
+
+
+class CustomerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Customer
+        fields = ('id', 'full_name',)
+
 class ServiceTypeSerializer(serializers.ModelSerializer):
     class Meta:
         model = ServiceType
@@ -60,7 +87,7 @@ class ServiceTypeSerializer(serializers.ModelSerializer):
 
 class AppointmentsSerializer(serializers.ModelSerializer):
     service_type = ServiceTypeSerializer(many=False)
-
+    customer = CustomerSerializer(many=False)
     class Meta:
         model = Appointments
-        fields = ('id', 'service_type','completed', 'consultation', 'request_details', 'request_date', )
+        fields = ('id', 'service_type','completed', 'consultation', 'request_details', 'request_date', 'customer' )
