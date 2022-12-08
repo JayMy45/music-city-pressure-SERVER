@@ -4,7 +4,7 @@ from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
 from django.contrib.auth.models import User
-from mcpressureapi.models import Appointments, Customer, Employee, ServiceType
+from mcpressureapi.models import Appointments, Customer, Employee, ServiceType, Progress
 
 class AppointmentView(ViewSet):
     """Music City Pressure API Appointment view"""
@@ -71,6 +71,7 @@ class AppointmentView(ViewSet):
             )
 
         else:
+
             customer = Customer.objects.get(user=request.auth.user)
             service_type = ServiceType.objects.get(pk=request.data["service_type"])
 
@@ -86,7 +87,46 @@ class AppointmentView(ViewSet):
     
         serializer = AppointmentsSerializer(appointment)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+    def update(self, request, pk=None):
+        """Handles PUT request of single customer
+
+        Return:
+            Response - No response body status just (204)
+        """
+
+        user = User.objects.get(pk=request.auth.user_id)
+        appointment = Appointments.objects.get(pk=pk)
+
+        # determine if user is_staff/employee
+        if user.is_staff:
+
+            # if staff is updating appointment
+            service_type = ServiceType.objects.get(pk=request.data["service_type"])
+            appointment.service_type = service_type
+            progress = Progress.objects.get(pk=request.data["progress"])
+            appointment.progress = progress
+            appointment.service_type = service_type
+            appointment.request_date = request.data["request_date"]
+            appointment.date_completed = request.data["date_completed"]
+            appointment.consultation = request.data["consultation"]
+            appointment.completed = request.data["completed"]
         
+        else:
+            
+            # if customer is updating an appointment   
+            service_type = ServiceType.objects.get(pk=request.data["service_type"])
+            appointment.service_type = service_type
+            appointment.request_date = request.data["request_date"]
+            appointment.consultation = request.data["consultation"]
+            appointment.completed = request.data["completed"]
+            appointment.request_details = request.data["request_details"]
+            
+
+        appointment.save()
+
+        return Response(None, status=status.HTTP_204_NO_CONTENT)
+
 
 class CustomerSerializer(serializers.ModelSerializer):
     class Meta:
