@@ -16,7 +16,19 @@ class AppointmentView(ViewSet):
             Response -- JSON serialized list of appointments
         """
 
-        appointments = Appointments.objects.all()
+        user = User.objects.get(pk=request.auth.user_id)
+
+        # determine if user is_staff/employee
+        if user.is_staff:
+            # get all appointments
+            appointments = Appointments.objects.all()
+
+        else:
+            # filter appointments according to logged in customer
+            log_user = Customer.objects.get(user=request.auth.user)
+            appointments = Appointments.objects.filter(customer_id = log_user)
+
+
         serialized = AppointmentsSerializer(appointments, many=True)
         return Response(serialized.data, status=status.HTTP_200_OK)
 
@@ -30,6 +42,7 @@ class AppointmentView(ViewSet):
         serialized = AppointmentsSerializer(appointment, context={'request': request})
         return Response(serialized.data, status=status.HTTP_200_OK)
 
+
     def create(self, request):
         """Handle POST operations
 
@@ -37,9 +50,12 @@ class AppointmentView(ViewSet):
             Response -- JSON serialized game instance
         """
         
-        # if employee is creating an appointment then the employee will be assigned to the that appt.
         user = User.objects.get(pk=request.auth.user_id)
+
+        # determine if user is_staff/employee
         if user.is_staff:
+
+            # if employee is creating an appointment then the employee will be assigned to the that appt.
             employee = Employee.objects.get(user=request.auth.user)
             customer = Customer.objects.get(pk=request.data["customer"])
             service_type = ServiceType.objects.get(pk=request.data["service_type"])
@@ -53,11 +69,12 @@ class AppointmentView(ViewSet):
                 consultation= False,
                 completed=False,
             )
-        # if customer is creating an appointment then an employee wont be assigned
+
         else:
             customer = Customer.objects.get(user=request.auth.user)
             service_type = ServiceType.objects.get(pk=request.data["service_type"])
 
+            # if customer is creating an appointment then without assigned employee
             appointment = Appointments.objects.create(
                 customer=customer,
                 service_type=service_type,
@@ -67,23 +84,21 @@ class AppointmentView(ViewSet):
                 completed=False,
             )
     
-        
-
         serializer = AppointmentsSerializer(appointment)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
         
-
-
 
 class CustomerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Customer
         fields = ('id', 'full_name',)
 
+
 class ServiceTypeSerializer(serializers.ModelSerializer):
     class Meta:
         model = ServiceType
         fields = ('id', 'name','description',)
+
 
 class AppointmentsSerializer(serializers.ModelSerializer):
     service_type = ServiceTypeSerializer(many=False)

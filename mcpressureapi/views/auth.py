@@ -86,7 +86,7 @@ def register_user(request):
             # Create a new user by invoking the `create_user` helper method
             # on Django's built-in User model
             new_user = User.objects.create_user(
-                username=request.data['email'],
+                username=request.data['username'],
                 email=request.data['email'],
                 password=request.data['password'],
                 first_name=request.data['first_name'],
@@ -98,7 +98,7 @@ def register_user(request):
                 status=status.HTTP_400_BAD_REQUEST
             )
 
-        # Now save the extra info in the levelupapi_gamer table
+        # Now save the extra info in the customer or employee table
 
         account = None
 
