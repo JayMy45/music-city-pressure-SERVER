@@ -10,7 +10,7 @@
             "date_completed": "2022-11-07",
             "consultation": false,
             "completed": false,
-            "location_id": 1
+            "request_details": "Need this roof done like yesterday"
         }
     },
     {
@@ -24,7 +24,7 @@
             "date_completed": "2022-11-07",
             "consultation": true,
             "completed": false,
-            "location_id": 1
+            "request_details": "Need this roof done like yesterday"
         }
     },
     {
@@ -38,7 +38,7 @@
             "date_completed": "2022-11-07",
             "consultation": false,
             "completed": true,
-            "location_id": 1
+            "request_details": "Need this roof done like yesterday"
         }
     }
 ]
