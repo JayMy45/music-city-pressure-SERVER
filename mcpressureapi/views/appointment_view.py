@@ -47,7 +47,7 @@ class AppointmentView(ViewSet):
         """Handle POST operations
 
         Returns
-            Response -- JSON serialized game instance
+            Response -- JSON serialized appointment instance
         """
         
         user = User.objects.get(pk=request.auth.user_id)
@@ -123,6 +123,11 @@ class AppointmentView(ViewSet):
 
         appointment.save()
 
+        return Response(None, status=status.HTTP_204_NO_CONTENT)
+
+    def destroy(self, request, pk):
+        appointment = Appointments.objects.get(pk=pk)
+        appointment.delete()
         return Response(None, status=status.HTTP_204_NO_CONTENT)
 
 
