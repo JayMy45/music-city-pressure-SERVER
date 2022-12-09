@@ -18,8 +18,14 @@ class CustomerView(ViewSet):
         Returns:
             Response -- JSON serialized list of Customers
         """
-
-        customer = Customer.objects.all()
+        user = User.objects.get(pk=request.auth.user_id)
+        if user.is_staff:
+            customer = Customer.objects.all()
+            
+        else:
+            log_customer =  Customer.objects.get(user=request.auth.user)
+            customer = Customer.objects.filter(user_id= log_customer.user_id)
+            
         serialized = CustomerSerializer(customer, many=True)
         return Response(serialized.data, status=status.HTTP_200_OK)
 

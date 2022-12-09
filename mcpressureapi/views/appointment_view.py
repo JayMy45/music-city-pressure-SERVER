@@ -140,7 +140,7 @@ class CustomerSerializer(serializers.ModelSerializer):
     user = UserSerializer(many=False)
     class Meta:
         model = Customer
-        fields = ('id', 'full_name', 'user', )
+        fields = ('id', 'full_name', 'user', 'address',)
 
 
 class ServiceTypeSerializer(serializers.ModelSerializer):
