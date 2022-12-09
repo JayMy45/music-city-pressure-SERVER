@@ -106,20 +106,18 @@ class AppointmentView(ViewSet):
             appointment.service_type = service_type
             progress = Progress.objects.get(pk=request.data["progress"])
             appointment.progress = progress
-            appointment.service_type = service_type
             appointment.request_date = request.data["request_date"]
             appointment.date_completed = request.data["date_completed"]
             appointment.consultation = request.data["consultation"]
             appointment.completed = request.data["completed"]
         
         else:
-            
+
             # if customer is updating an appointment   
             service_type = ServiceType.objects.get(pk=request.data["service_type"])
             appointment.service_type = service_type
             appointment.request_date = request.data["request_date"]
             appointment.consultation = request.data["consultation"]
-            appointment.completed = request.data["completed"]
             appointment.request_details = request.data["request_details"]
             
 
