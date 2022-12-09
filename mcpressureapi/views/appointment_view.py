@@ -131,10 +131,16 @@ class AppointmentView(ViewSet):
         return Response(None, status=status.HTTP_204_NO_CONTENT)
 
 
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model =  User
+        fields = ('id','is_staff', )
+
 class CustomerSerializer(serializers.ModelSerializer):
+    user = UserSerializer(many=False)
     class Meta:
         model = Customer
-        fields = ('id', 'full_name',)
+        fields = ('id', 'full_name', 'user', )
 
 
 class ServiceTypeSerializer(serializers.ModelSerializer):
@@ -148,4 +154,4 @@ class AppointmentsSerializer(serializers.ModelSerializer):
     customer = CustomerSerializer(many=False)
     class Meta:
         model = Appointments
-        fields = ('id', 'service_type','completed', 'consultation', 'request_details', 'request_date', 'customer' )
+        fields = ('id', 'service_type','completed', 'progress', 'consultation', 'request_details', 'request_date', 'customer' )
