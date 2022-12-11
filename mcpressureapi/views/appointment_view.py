@@ -55,6 +55,19 @@ class AppointmentView(ViewSet):
         # determine if user is_staff/employee
         if user.is_staff:
 
+            required_fields = ['service_type', 'request_date',
+                               'completed']
+            missing_fields = 'You are missing'
+            is_fields_missing = False
+
+            for field in required_fields:
+                value = request.data.get(field, None)
+                if value is None:
+                    missing_fields = f'{missing_fields} {field}'
+                    is_fields_missing = True
+            if is_fields_missing:
+                    return Response({"message": missing_fields}, status = status.HTTP_400_BAD_REQUEST)
+
             # if employee is creating an appointment then the employee will be assigned to the that appt.
             employee = Employee.objects.get(user=request.auth.user)
             customer = Customer.objects.get(pk=request.data["customer"])
@@ -71,6 +84,19 @@ class AppointmentView(ViewSet):
             )
 
         else:
+
+            required_fields = ['service_type', 'request_date',
+                               'completed']
+            missing_fields = 'You are missing'
+            is_fields_missing = False
+
+            for field in required_fields:
+                value = request.data.get(field, None)
+                if value is None:
+                    missing_fields = f'{missing_fields} {field}'
+                    is_fields_missing = True
+            if is_fields_missing:
+                    return Response({"message": missing_fields}, status = status.HTTP_400_BAD_REQUEST)
 
             customer = Customer.objects.get(user=request.auth.user)
             service_type = ServiceType.objects.get(pk=request.data["service_type"])
@@ -95,11 +121,28 @@ class AppointmentView(ViewSet):
             Response - No response body status just (204)
         """
 
+       
+
         user = User.objects.get(pk=request.auth.user_id)
+        
         appointment = Appointments.objects.get(pk=pk)
+
 
         # determine if user is_staff/employee
         if user.is_staff:
+            required_fields = ['service_type','progress',
+                            'request_date','date_completed',
+                            'consultation','completed']
+            missing_fields = 'You are missing'
+            is_fields_missing = False
+
+            for field in required_fields:
+                value = request.data.get(field, None)
+                if value is None:
+                    missing_fields = f'{missing_fields} {field}'
+                    is_fields_missing = True
+            if is_fields_missing:
+                    return Response({"message": missing_fields}, status = status.HTTP_400_BAD_REQUEST)
 
             # if staff is updating appointment
             service_type = ServiceType.objects.get(pk=request.data["service_type"])
