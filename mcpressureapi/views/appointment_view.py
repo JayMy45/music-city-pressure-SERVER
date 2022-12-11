@@ -38,7 +38,12 @@ class AppointmentView(ViewSet):
         Returns:
             Response -- JSON serialized appointment record
         """
-        appointment = Appointments.objects.get(pk=pk)
+        try:
+            appointment = Appointments.objects.get(pk=pk)
+
+        except Appointments.DoesNotExist:
+            return Response({"message": "The appointment you specified does not exist"}, status = status.HTTP_404_NOT_FOUND)
+
         serialized = AppointmentsSerializer(appointment, context={'request': request})
         return Response(serialized.data, status=status.HTTP_200_OK)
 
@@ -119,17 +124,20 @@ class AppointmentView(ViewSet):
 
         Return:
             Response - No response body status just (204)
-        """
-
-       
+        """ 
 
         user = User.objects.get(pk=request.auth.user_id)
         
-        appointment = Appointments.objects.get(pk=pk)
+        try:
+            appointment = Appointments.objects.get(pk=pk)
+
+        except Appointments.DoesNotExist:
+            return Response({"message": "The appointment you specified does not exist"}, status = status.HTTP_404_NOT_FOUND)
 
 
         # determine if user is_staff/employee
         if user.is_staff:
+            # determine if data is missing from PUT request (staff)
             required_fields = ['service_type','progress',
                             'request_date','date_completed',
                             'consultation','completed']
@@ -155,6 +163,18 @@ class AppointmentView(ViewSet):
             appointment.completed = request.data["completed"]
         
         else:
+            # determine if data is missing from PUT request (customer)
+            required_fields = ['service_type', 'request_date']
+            missing_fields = 'You are missing'
+            is_fields_missing = False
+
+            for field in required_fields:
+                value = request.data.get(field, None)
+                if value is None:
+                    missing_fields = f'{missing_fields} {field}'
+                    is_fields_missing = True
+            if is_fields_missing:
+                    return Response({"message": missing_fields}, status = status.HTTP_400_BAD_REQUEST)
 
             # if customer is updating an appointment   
             service_type = ServiceType.objects.get(pk=request.data["service_type"])
@@ -162,7 +182,6 @@ class AppointmentView(ViewSet):
             appointment.request_date = request.data["request_date"]
             appointment.consultation = request.data["consultation"]
             appointment.request_details = request.data["request_details"]
-            
 
         appointment.save()
 
@@ -172,9 +191,9 @@ class AppointmentView(ViewSet):
         try:
             appointment = Appointments.objects.get(pk=pk)
             appointment.delete()
-            return Response({"message": "This Appointment has been DELETED"}, status=status.HTTP_204_NO_CONTENT)
+            return Response({"message": "This appointment has been DELETED"}, status=status.HTTP_204_NO_CONTENT)
         except Appointments.DoesNotExist:
-            return Response({"message": "The Appointment you specified does not exist"}, status = status.HTTP_404_NOT_FOUND)
+            return Response({"message": "The appointment you specified does not exist"}, status = status.HTTP_404_NOT_FOUND)
 
 
 class UserSerializer(serializers.ModelSerializer):
