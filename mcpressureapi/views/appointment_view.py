@@ -126,9 +126,12 @@ class AppointmentView(ViewSet):
         return Response(None, status=status.HTTP_204_NO_CONTENT)
 
     def destroy(self, request, pk):
-        appointment = Appointments.objects.get(pk=pk)
-        appointment.delete()
-        return Response(None, status=status.HTTP_204_NO_CONTENT)
+        try:
+            appointment = Appointments.objects.get(pk=pk)
+            appointment.delete()
+            return Response({"message": "This Appointment has been DELETED"}, status=status.HTTP_204_NO_CONTENT)
+        except Appointments.DoesNotExist:
+            return Response({"message": "The Appointment you specified does not exist"}, status = status.HTTP_404_NOT_FOUND)
 
 
 class UserSerializer(serializers.ModelSerializer):
