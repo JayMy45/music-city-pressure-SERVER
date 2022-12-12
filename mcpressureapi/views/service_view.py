@@ -75,6 +75,36 @@ class ServiceTypeView(ViewSet):
         serialized =  ServiceTypeSerializer(new_service, many=False)
         return Response(serialized.data, status=status.HTTP_201_CREATED)
 
+    def update(self, request, pk=None):
+        """Handles PUT request of single Service Type
+
+        Return:
+            Response - No response body status just (201)
+        """ 
+        
+        try: 
+            service = ServiceType.objects.get(pk=pk)
+        except ServiceType.DoesNotExist:
+            return Response({"message": "The appointment you specified does not exist"}, status = status.HTTP_404_NOT_FOUND)
+
+        user = User.objects.get(pk=request.auth.user_id)
+        if user.is_staff:
+
+            service.name = request.data["name"]
+            service.description = request.data["description"]
+            service.details = request.data["details"]
+            service.price = request.data["price"]
+            equipment = Equipment.objects.get(pk=request.data["equipment_id"])
+            service.equipment_id = equipment
+            
+        else:
+            return Response({"message": "This function is not available to customers"}, status = status.HTTP_403_FORBIDDEN)
+
+        service.save()
+        serialized =  ServiceTypeSerializer(service, many=False)
+        return Response(serialized.data, status=status.HTTP_201_CREATED)
+
+
 
 class ServiceTypeSerializer(serializers.ModelSerializer):
     class Meta:
