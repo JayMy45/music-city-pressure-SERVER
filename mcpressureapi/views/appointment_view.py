@@ -90,8 +90,7 @@ class AppointmentView(ViewSet):
 
         else:
 
-            required_fields = ['service_type', 'request_date',
-                               'completed']
+            required_fields = ['service_type', 'request_date']
             missing_fields = 'You are missing'
             is_fields_missing = False
 
