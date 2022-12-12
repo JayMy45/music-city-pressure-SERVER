@@ -90,8 +90,7 @@ class AppointmentView(ViewSet):
 
         else:
 
-            required_fields = ['service_type', 'request_date',
-                               'completed']
+            required_fields = ['service_type', 'request_date']
             missing_fields = 'You are missing'
             is_fields_missing = False
 
@@ -123,7 +122,7 @@ class AppointmentView(ViewSet):
         """Handles PUT request of single customer
 
         Return:
-            Response - No response body status just (204)
+            Response - No response body status just (201)
         """ 
 
         user = User.objects.get(pk=request.auth.user_id)

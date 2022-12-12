@@ -19,6 +19,7 @@ class EmployeeView(ViewSet):
             Response -- JSON serialized list of Employees
         """
 
+        
         employee = Employee.objects.all()
         serialized = EmployeeSerializer(employee, many=True)
         return Response(serialized.data, status=status.HTTP_200_OK)
