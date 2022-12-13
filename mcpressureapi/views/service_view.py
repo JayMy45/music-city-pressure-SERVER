@@ -117,4 +117,4 @@ class ServiceTypeView(ViewSet):
 class ServiceTypeSerializer(serializers.ModelSerializer):
     class Meta:
         model = ServiceType
-        fields = ('id', 'name','description', 'details',)
+        fields = ('id', 'name','description', 'details', 'price', 'equipment_id',)
