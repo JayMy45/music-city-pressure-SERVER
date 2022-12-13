@@ -16,18 +16,21 @@ class AppointmentView(ViewSet):
             Response -- JSON serialized list of appointments
         """
 
-        user = User.objects.get(pk=request.auth.user_id)
+        # user = User.objects.get(pk=request.auth.user_id)
 
-        # determine if user is_staff/employee
-        if user.is_staff:
+        try: 
+            log_user = Customer.objects.get(user=request.auth.user)
+
+            if log_user:
+                appointments = Appointments.objects.filter(customer_id = log_user)
+
+        except:
+            # user.is_staff
+# 
             # get all appointments
             appointments = Appointments.objects.all()
-
-        else:
-            # filter appointments according to logged in customer
-            log_user = Customer.objects.get(user=request.auth.user)
-            appointments = Appointments.objects.filter(customer_id = log_user)
-
+            
+            
 
         serialized = AppointmentsSerializer(appointments, many=True)
         return Response(serialized.data, status=status.HTTP_200_OK)

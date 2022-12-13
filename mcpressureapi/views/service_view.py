@@ -39,7 +39,7 @@ class ServiceTypeView(ViewSet):
         """Handle POST request for Service Types
 
         Returns:
-            Response -- JSON serialized appointment instance
+            Response -- JSON serialized service instance
         """
         user = User.objects.get(pk=request.auth.user_id)
 
@@ -85,7 +85,7 @@ class ServiceTypeView(ViewSet):
         try: 
             service = ServiceType.objects.get(pk=pk)
         except ServiceType.DoesNotExist:
-            return Response({"message": "The appointment you specified does not exist"}, status = status.HTTP_404_NOT_FOUND)
+            return Response({"message": "The service you specified does not exist"}, status = status.HTTP_404_NOT_FOUND)
 
         user = User.objects.get(pk=request.auth.user_id)
         if user.is_staff:
@@ -103,6 +103,14 @@ class ServiceTypeView(ViewSet):
         service.save()
         serialized =  ServiceTypeSerializer(service, many=False)
         return Response(serialized.data, status=status.HTTP_201_CREATED)
+
+    def destroy(self, request, pk):
+        try:
+            service = ServiceType.objects.get(pk=pk)
+            service.delete()
+            return Response({"message": "This service has been DELETED"}, status=status.HTTP_204_NO_CONTENT)
+        except ServiceType.DoesNotExist:
+            return Response({"message": "The service you specified does not exist"}, status = status.HTTP_404_NOT_FOUND)
 
 
 
