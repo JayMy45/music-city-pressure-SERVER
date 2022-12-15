@@ -17,7 +17,6 @@ class AppointmentView(ViewSet):
         """
 
         # user = User.objects.get(pk=request.auth.user_id)
-
         try: 
             log_user = Customer.objects.get(user=request.auth.user)
 
@@ -26,7 +25,6 @@ class AppointmentView(ViewSet):
 
         except:
             # user.is_staff
-# 
             # get all appointments
             appointments = Appointments.objects.all()
             
@@ -145,7 +143,7 @@ class AppointmentView(ViewSet):
         if user.is_staff:
             # determine if data is missing from PUT request (staff)
             required_fields = ['service_type','progress',
-                            'request_date','date_completed',
+                            'request_date',
                             'consultation','completed']
             missing_fields = 'You are missing'
             is_fields_missing = False
@@ -164,7 +162,6 @@ class AppointmentView(ViewSet):
             progress = Progress.objects.get(pk=request.data["progress"])
             appointment.progress = progress
             appointment.request_date = request.data["request_date"]
-            appointment.date_completed = request.data["date_completed"]
             appointment.consultation = request.data["consultation"]
             appointment.completed = request.data["completed"]
         
