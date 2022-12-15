@@ -4,6 +4,7 @@
         "pk": 1,
         "fields": {
             "label": "scheduled",
+            "class_name": "progress",
             "percent": 0
         }
     },
@@ -12,6 +13,7 @@
         "pk": 2,
         "fields": {
             "label": "en-route",
+            "class_name": "progress",
             "percent": 0
         }
     },
@@ -20,6 +22,7 @@
         "pk": 3,
         "fields": {
             "label": "on-site",
+            "class_name": "progress is-warning",
             "percent": 10
         }
     },
@@ -28,30 +31,34 @@
         "pk": 4,
         "fields": {
             "label": "Getting Started",
+            "class_name": "progress is-info",
             "percent": 25
-        }
-    },
-    {
-        "model": "mcpressureapi.progress",
-        "pk": 4,
-        "fields": {
-            "label": "Works In Progress",
-            "percent": 50
-        }
-    },
-    {
-        "model": "mcpressureapi.progress",
-        "pk": 4,
-        "fields": {
-            "label": "Finishing Up",
-            "percent": 75
         }
     },
     {
         "model": "mcpressureapi.progress",
         "pk": 5,
         "fields": {
+            "label": "Works In Progress",
+            "class_name": "progress is-link",
+            "percent": 50
+        }
+    },
+    {
+        "model": "mcpressureapi.progress",
+        "pk": 6,
+        "fields": {
+            "label": "Finishing Up",
+            "class_name": "progress is-link",
+            "percent": 75
+        }
+    },
+    {
+        "model": "mcpressureapi.progress",
+        "pk": 7,
+        "fields": {
             "label": "Complete",
+            "class_name": "progress is-success",
             "percent": 100
         }
     }

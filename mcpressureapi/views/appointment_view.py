@@ -80,6 +80,7 @@ class AppointmentView(ViewSet):
             employee = Employee.objects.get(user=request.auth.user)
             customer = Customer.objects.get(pk=request.data["customer"])
             service_type = ServiceType.objects.get(pk=request.data["service_type"])
+            progress = Progress.objects.get(pk=request.data["progress"])
 
             appointment = Appointments.objects.create(
                 employee=employee,
@@ -87,6 +88,7 @@ class AppointmentView(ViewSet):
                 service_type=service_type,
                 request_date=request.data["request_date"],
                 request_details=request.data["request_details"],
+                progress = progress,
                 consultation= False,
                 completed=False,
             )
@@ -107,6 +109,7 @@ class AppointmentView(ViewSet):
 
             customer = Customer.objects.get(user=request.auth.user)
             service_type = ServiceType.objects.get(pk=request.data["service_type"])
+            progress = Progress.objects.get(pk=request.data["progress"])
 
             # if customer is creating an appointment then without assigned employee
             appointment = Appointments.objects.create(
@@ -114,6 +117,7 @@ class AppointmentView(ViewSet):
                 service_type=service_type,
                 request_date=request.data["request_date"],
                 request_details=request.data["request_details"],
+                progress = progress,
                 consultation= False,
                 completed=False,
             )
@@ -212,7 +216,7 @@ class CustomerSerializer(serializers.ModelSerializer):
 class ProgressSerializer(serializers.ModelSerializer):
     class Meta:
         model =  Progress
-        fields = ('id','label', 'percent', )
+        fields = ('id','label', 'percent', 'class_name',)
 
 
 class ServiceTypeSerializer(serializers.ModelSerializer):

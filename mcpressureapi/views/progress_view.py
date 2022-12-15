@@ -36,4 +36,4 @@ class ProgressView(ViewSet):
 class ProgressSerializer(serializers.ModelSerializer):
     class Meta:
         model =  Progress
-        fields = ('id','label', 'percent', )
+        fields = ('id','label', 'percent', 'class_name', )
