@@ -26,7 +26,7 @@ router.register(r'services', ServiceTypeView, 'service')
 router.register(r'customers', CustomerView, 'customer')
 router.register(r'employees', EmployeeView, 'employee')
 router.register(r'equipments', EquipmentView, 'equipment')
-router.register(r'progressions', ProgressView, 'progress')
+router.register(r'progression', ProgressView, 'progress')
 
 urlpatterns = [
     path('register', register_user),

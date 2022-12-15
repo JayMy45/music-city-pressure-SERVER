@@ -3,35 +3,56 @@
         "model": "mcpressureapi.progress",
         "pk": 1,
         "fields": {
-            "label": "scheduled"
+            "label": "scheduled",
+            "percent": 0
         }
     },
     {
         "model": "mcpressureapi.progress",
         "pk": 2,
         "fields": {
-            "label": "en route"
+            "label": "en-route",
+            "percent": 0
         }
     },
     {
         "model": "mcpressureapi.progress",
         "pk": 3,
         "fields": {
-            "label": "on-site"
+            "label": "on-site",
+            "percent": 10
         }
     },
     {
         "model": "mcpressureapi.progress",
         "pk": 4,
         "fields": {
-            "label": "work in progress"
+            "label": "Getting Started",
+            "percent": 25
+        }
+    },
+    {
+        "model": "mcpressureapi.progress",
+        "pk": 4,
+        "fields": {
+            "label": "Works In Progress",
+            "percent": 50
+        }
+    },
+    {
+        "model": "mcpressureapi.progress",
+        "pk": 4,
+        "fields": {
+            "label": "Finishing Up",
+            "percent": 75
         }
     },
     {
         "model": "mcpressureapi.progress",
         "pk": 5,
         "fields": {
-            "label": "complete"
+            "label": "Complete",
+            "percent": 100
         }
     }
 ]

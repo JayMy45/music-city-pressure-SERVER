@@ -17,8 +17,23 @@ class ProgressView(ViewSet):
         progress = Progress.objects.all()
         serialized = ProgressSerializer(progress, many=True)
         return Response(serialized.data, status=status.HTTP_200_OK)
+    
+    def retrieve(self, request, pk=None):
+        """Handle GET requests for single progress 
+
+        Returns:
+            Response -- JSON serialized progress
+        """
+
+        try:
+            progress = Progress.objects.get(pk=pk)
+        except Progress.DoesNotExist:
+            return Response({"message": "The progress you specified does not exist"}, status = status.HTTP_404_NOT_FOUND)
+
+        serialized = ProgressSerializer(progress, context={'request': request})
+        return Response(serialized.data, status=status.HTTP_200_OK)
 
 class ProgressSerializer(serializers.ModelSerializer):
     class Meta:
         model =  Progress
-        fields = ('id','label', )
+        fields = ('id','label', 'percent', )
