@@ -212,7 +212,7 @@ class CustomerSerializer(serializers.ModelSerializer):
 class ProgressSerializer(serializers.ModelSerializer):
     class Meta:
         model =  Progress
-        fields = ('id','label', )
+        fields = ('id','label', 'percent', )
 
 
 class ServiceTypeSerializer(serializers.ModelSerializer):
