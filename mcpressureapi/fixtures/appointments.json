@@ -6,8 +6,9 @@
             "employee": 1,
             "customer": 1,
             "service_type": 1,
-            "request_date": "2022-10-23",
+            "request_date": "2023-03-23",
             "date_completed": "2022-11-07",
+            "progress": 3,
             "consultation": false,
             "completed": false,
             "request_details": "Need this roof done like yesterday"
@@ -22,6 +23,7 @@
             "service_type": 1,
             "request_date": "2022-10-23",
             "date_completed": "2022-11-07",
+            "progress": 7,
             "consultation": true,
             "completed": false,
             "request_details": "Need this roof done like yesterday"
@@ -36,6 +38,7 @@
             "service_type": 1,
             "request_date": "2022-10-23",
             "date_completed": "2022-11-07",
+            "progress": 1,
             "consultation": false,
             "completed": true,
             "request_details": "Need this roof done like yesterday"

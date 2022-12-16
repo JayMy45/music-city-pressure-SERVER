@@ -17,7 +17,6 @@ class AppointmentView(ViewSet):
         """
 
         # user = User.objects.get(pk=request.auth.user_id)
-
         try: 
             log_user = Customer.objects.get(user=request.auth.user)
 
@@ -26,7 +25,6 @@ class AppointmentView(ViewSet):
 
         except:
             # user.is_staff
-# 
             # get all appointments
             appointments = Appointments.objects.all()
             
@@ -80,6 +78,7 @@ class AppointmentView(ViewSet):
             employee = Employee.objects.get(user=request.auth.user)
             customer = Customer.objects.get(pk=request.data["customer"])
             service_type = ServiceType.objects.get(pk=request.data["service_type"])
+            progress = Progress.objects.get(pk=request.data["progress"])
 
             appointment = Appointments.objects.create(
                 employee=employee,
@@ -87,6 +86,7 @@ class AppointmentView(ViewSet):
                 service_type=service_type,
                 request_date=request.data["request_date"],
                 request_details=request.data["request_details"],
+                progress = progress,
                 consultation= False,
                 completed=False,
             )
@@ -107,6 +107,7 @@ class AppointmentView(ViewSet):
 
             customer = Customer.objects.get(user=request.auth.user)
             service_type = ServiceType.objects.get(pk=request.data["service_type"])
+            progress = Progress.objects.get(pk=request.data["progress"])
 
             # if customer is creating an appointment then without assigned employee
             appointment = Appointments.objects.create(
@@ -114,6 +115,7 @@ class AppointmentView(ViewSet):
                 service_type=service_type,
                 request_date=request.data["request_date"],
                 request_details=request.data["request_details"],
+                progress = progress,
                 consultation= False,
                 completed=False,
             )
@@ -141,7 +143,7 @@ class AppointmentView(ViewSet):
         if user.is_staff:
             # determine if data is missing from PUT request (staff)
             required_fields = ['service_type','progress',
-                            'request_date','date_completed',
+                            'request_date',
                             'consultation','completed']
             missing_fields = 'You are missing'
             is_fields_missing = False
@@ -160,7 +162,6 @@ class AppointmentView(ViewSet):
             progress = Progress.objects.get(pk=request.data["progress"])
             appointment.progress = progress
             appointment.request_date = request.data["request_date"]
-            appointment.date_completed = request.data["date_completed"]
             appointment.consultation = request.data["consultation"]
             appointment.completed = request.data["completed"]
         
@@ -209,6 +210,11 @@ class CustomerSerializer(serializers.ModelSerializer):
         model = Customer
         fields = ('id', 'full_name', 'user', 'address',)
 
+class ProgressSerializer(serializers.ModelSerializer):
+    class Meta:
+        model =  Progress
+        fields = ('id','label', 'percent', 'class_name',)
+
 
 class ServiceTypeSerializer(serializers.ModelSerializer):
     class Meta:
@@ -218,6 +224,7 @@ class ServiceTypeSerializer(serializers.ModelSerializer):
 
 class AppointmentsSerializer(serializers.ModelSerializer):
     service_type = ServiceTypeSerializer(many=False)
+    progress = ProgressSerializer(many=False)
     customer = CustomerSerializer(many=False)
     class Meta:
         model = Appointments
