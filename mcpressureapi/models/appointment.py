@@ -6,6 +6,7 @@ class Appointments(models.Model):
     service_type = models.ForeignKey("ServiceType", null=True, blank=True, on_delete=models.CASCADE)
     progress = models.ForeignKey("Progress", null=True, blank=True, on_delete=models.CASCADE)
     request_date = models.DateField(null=True, blank=True, auto_now=False, auto_now_add=False)
+    scheduled = models.BooleanField(default=False)
     date_completed = models.DateField(null=True, blank=True, auto_now=False, auto_now_add=False)
     consultation = models.BooleanField(default=False)
     completed = models.BooleanField(default=False) 

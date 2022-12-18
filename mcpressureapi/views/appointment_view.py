@@ -85,6 +85,7 @@ class AppointmentView(ViewSet):
                 customer=customer,
                 service_type=service_type,
                 request_date=request.data["request_date"],
+                scheduled = False,
                 request_details=request.data["request_details"],
                 progress = progress,
                 consultation= False,
@@ -114,6 +115,7 @@ class AppointmentView(ViewSet):
                 customer=customer,
                 service_type=service_type,
                 request_date=request.data["request_date"],
+                scheduled = False,
                 request_details=request.data["request_details"],
                 progress = progress,
                 consultation= False,
@@ -162,6 +164,7 @@ class AppointmentView(ViewSet):
             progress = Progress.objects.get(pk=request.data["progress"])
             appointment.progress = progress
             appointment.request_date = request.data["request_date"]
+            appointment.scheduled = request.data["scheduled"]
             appointment.consultation = request.data["consultation"]
             appointment.completed = request.data["completed"]
         
@@ -228,4 +231,4 @@ class AppointmentsSerializer(serializers.ModelSerializer):
     customer = CustomerSerializer(many=False)
     class Meta:
         model = Appointments
-        fields = ('id', 'service_type','completed', 'progress', 'consultation', 'request_details', 'request_date', 'customer' )
+        fields = ('id', 'service_type','completed', 'progress', 'consultation', 'request_details', 'request_date', 'customer', 'scheduled', )
