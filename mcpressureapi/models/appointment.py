@@ -11,7 +11,15 @@ class Appointments(models.Model):
     consultation = models.BooleanField(default=False)
     completed = models.BooleanField(default=False) 
     request_details = models.CharField(max_length=200)
-    confirm = models.ManyToManyField('Customer', blank=True, through='CustomerConfirmAppointment')
+    confirm = models.BooleanField(default=False)
+
+    @property
+    def confirmed(self):
+     return self.__confirmed
+
+    @confirmed.setter
+    def unconfirmed(self, value):
+        self.__confirmed = value
     
     # on the fence about locations...
     # location = models.ForeignKey("Location", on_delete=models.CASCADE)

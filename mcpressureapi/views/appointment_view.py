@@ -1,5 +1,6 @@
 """View module for handling requests for customer data"""
 from django.http import HttpResponseServerError
+from rest_framework.decorators import action
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
@@ -8,6 +9,22 @@ from mcpressureapi.models import Appointments, Customer, Employee, ServiceType, 
 
 class AppointmentView(ViewSet):
     """Music City Pressure API Appointment view"""
+
+    @action(methods=['post'], detail=[True])
+    def confirm(self, request, pk):
+        """Post request for a user to confirm an appointment"""
+        customer = Customer.objects.get(user=request.auth.user)
+        appointment = Appointments.objects.get(pk=pk)
+        appointment.confirm.add(customer)
+        return Response({'message': 'Appointment Confirmed'}, status=status.HTTP_201_CREATED)
+
+    @action(methods=['delete'], detail=[True])
+    def remove(self, request, pk):
+        """Post request for a user to confirm an appointment"""
+        customer = Customer.objects.get(user=request.auth.user)
+        appointment = Appointments.objects.get(pk=pk)
+        appointment.confirm.remove(customer)
+        return Response({'message': 'Appointment Confirmation Removed'}, status=status.HTTP_204_NO_CONTENT)
      
     def list(self, request):
         """Handle GET requests to get all Appointments
@@ -28,8 +45,6 @@ class AppointmentView(ViewSet):
             # get all appointments
             appointments = Appointments.objects.all()
             
-            
-
         serialized = AppointmentsSerializer(appointments, many=True)
         return Response(serialized.data, status=status.HTTP_200_OK)
 
@@ -224,11 +239,11 @@ class ServiceTypeSerializer(serializers.ModelSerializer):
         model = ServiceType
         fields = ('id', 'name','description',)
 
-
 class AppointmentsSerializer(serializers.ModelSerializer):
     service_type = ServiceTypeSerializer(many=False)
     progress = ProgressSerializer(many=False)
     customer = CustomerSerializer(many=False)
     class Meta:
         model = Appointments
-        fields = ('id', 'service_type','completed', 'progress', 'consultation', 'request_details', 'request_date', 'customer', 'scheduled', )
+        fields = ('id', 'service_type','completed', 'progress', 'consultation', 
+                  'request_details', 'request_date', 'customer', 'scheduled', 'confirm', )

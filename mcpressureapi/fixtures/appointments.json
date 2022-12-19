@@ -12,6 +12,7 @@
             "progress": 3,
             "consultation": false,
             "completed": false,
+            "confirm": false,
             "request_details": "Need this roof done like yesterday"
         }
     },
@@ -28,6 +29,7 @@
             "progress": 7,
             "consultation": true,
             "completed": false,
+            "confirm": false,
             "request_details": "Need this roof done like yesterday"
         }
     },
@@ -44,6 +46,7 @@
             "progress": 1,
             "consultation": false,
             "completed": true,
+            "confirm": false,
             "request_details": "Need this roof done like yesterday"
         }
     }
