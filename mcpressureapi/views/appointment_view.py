@@ -201,6 +201,7 @@ class AppointmentView(ViewSet):
             service_type = ServiceType.objects.get(pk=request.data["service_type"])
             appointment.service_type = service_type
             appointment.request_date = request.data["request_date"]
+            appointment.confirm = request.data["confirm"]
             appointment.consultation = request.data["consultation"]
             appointment.request_details = request.data["request_details"]
 
