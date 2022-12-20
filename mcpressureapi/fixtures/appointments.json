@@ -7,10 +7,12 @@
             "customer": 1,
             "service_type": 1,
             "request_date": "2023-03-23",
+            "scheduled": false,
             "date_completed": "2022-11-07",
-            "progress": 3,
+            "progress": 1,
             "consultation": false,
             "completed": false,
+            "confirm": false,
             "request_details": "Need this roof done like yesterday"
         }
     },
@@ -22,10 +24,12 @@
             "customer": 1,
             "service_type": 1,
             "request_date": "2022-10-23",
+            "scheduled": true,
             "date_completed": "2022-11-07",
-            "progress": 7,
+            "progress": 1,
             "consultation": true,
             "completed": false,
+            "confirm": false,
             "request_details": "Need this roof done like yesterday"
         }
     },
@@ -37,10 +41,12 @@
             "customer": 1,
             "service_type": 1,
             "request_date": "2022-10-23",
+            "scheduled": false,
             "date_completed": "2022-11-07",
             "progress": 1,
             "consultation": false,
-            "completed": true,
+            "completed": false,
+            "confirm": false,
             "request_details": "Need this roof done like yesterday"
         }
     }

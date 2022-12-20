@@ -29,7 +29,8 @@ def login_user(request):
         data = {
             'valid': True,
             'token': token.key,
-            'staff': authenticated_user.is_staff
+            'staff': authenticated_user.is_staff,
+            'supervisor': authenticated_user.is_superuser
         }
         return Response(data)
     else:
@@ -46,6 +47,7 @@ def register_user(request):
       request -- The full HTTP request object
     '''
     account_type = request.data.get('account_type', None)
+    super_type = request.data.get('super_type', None)
     email = request.data.get('email', None)
     first_name = request.data.get('first_name', None)
     last_name = request.data.get('last_name', None)
@@ -110,6 +112,13 @@ def register_user(request):
             )
         elif account_type == 'employee':
             new_user.is_staff = True
+        
+
+            if super_type == 'supervisor':
+                new_user.is_superuser = True
+                
+            else:
+                new_user.is_superuser = False
             new_user.save()
 
             account = Employee.objects.create(
