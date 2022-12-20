@@ -3,7 +3,7 @@
         "model": "mcpressureapi.progress",
         "pk": 1,
         "fields": {
-            "label": "scheduled",
+            "label": "unConfirmed",
             "class_name": "progress",
             "percent": 0
         }
@@ -12,14 +12,23 @@
         "model": "mcpressureapi.progress",
         "pk": 2,
         "fields": {
-            "label": "en-route",
+            "label": "scheduled",
             "class_name": "progress",
-            "percent": 0
+            "percent": 1
         }
     },
     {
         "model": "mcpressureapi.progress",
         "pk": 3,
+        "fields": {
+            "label": "en-route",
+            "class_name": "progress",
+            "percent": 5
+        }
+    },
+    {
+        "model": "mcpressureapi.progress",
+        "pk": 4,
         "fields": {
             "label": "on-site",
             "class_name": "progress is-warning",
@@ -28,7 +37,7 @@
     },
     {
         "model": "mcpressureapi.progress",
-        "pk": 4,
+        "pk": 5,
         "fields": {
             "label": "Starting",
             "class_name": "progress is-info",
@@ -37,7 +46,7 @@
     },
     {
         "model": "mcpressureapi.progress",
-        "pk": 5,
+        "pk": 6,
         "fields": {
             "label": "Working",
             "class_name": "progress is-link",
@@ -46,7 +55,7 @@
     },
     {
         "model": "mcpressureapi.progress",
-        "pk": 6,
+        "pk": 7,
         "fields": {
             "label": "Finishing",
             "class_name": "progress is-link",
@@ -55,7 +64,7 @@
     },
     {
         "model": "mcpressureapi.progress",
-        "pk": 7,
+        "pk": 8,
         "fields": {
             "label": "Complete",
             "class_name": "progress is-success",
