@@ -14,7 +14,7 @@
         "fields": {
             "label": "scheduled",
             "class_name": "progress",
-            "percent": 1
+            "percent": 0.5
         }
     },
     {

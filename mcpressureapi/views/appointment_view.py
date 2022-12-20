@@ -180,6 +180,7 @@ class AppointmentView(ViewSet):
             appointment.progress = progress
             appointment.request_date = request.data["request_date"]
             appointment.scheduled = request.data["scheduled"]
+            appointment.confirm = request.data["confirm"]
             appointment.consultation = request.data["consultation"]
             appointment.completed = request.data["completed"]
         
