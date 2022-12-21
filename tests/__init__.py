@@ -1,0 +1,1 @@
+from .appointments_tests import AppointmentTests
