@@ -3,11 +3,13 @@ from rest_framework import status
 from rest_framework.test import APITestCase
 from mcpressureapi.models import Appointments
 from mcpressureapi.models import Customer
+from rest_framework.authtoken.models import Token
+
 
 class AppointmentTests(APITestCase):
 
     # Add fixtures need to run to build the test database
-    fixtures = ['user','token','customer','employee',
+    fixtures = ['user','tokens','customer','employee',
                 'location','progress','equipment','service_type',
                 'appointments',]
 
