@@ -6,14 +6,15 @@
             "employee": 1,
             "customer": 1,
             "service_type": 1,
-            "request_date": "2023-03-23",
-            "scheduled": false,
-            "date_completed": "2022-11-07",
             "progress": 1,
+            "request_details": "Need this roof done like yesterday",
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiAne5U43D7_FxWGftIJVbXANr7evBAC7Z3g&usqp=CAU",
+            "request_date": "2023-03-23",
+            "date_completed": "2022-11-07",
+            "scheduled": false,
             "consultation": false,
             "completed": false,
-            "confirm": false,
-            "request_details": "Need this roof done like yesterday"
+            "confirm": false
         }
     },
     {
@@ -23,14 +24,15 @@
             "employee": 1,
             "customer": 1,
             "service_type": 1,
-            "request_date": "2022-10-23",
-            "scheduled": false,
-            "date_completed": "2022-11-07",
             "progress": 1,
+            "request_details": "Need this roof done like yesterday",
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTW7QLiHbaKrqJrLe59D-Zrrsdqt_46RtvVLA&usqp=CAU",
+            "request_date": "2022-10-23",
+            "date_completed": "2022-11-07",
+            "scheduled": false,
             "consultation": true,
             "completed": false,
-            "confirm": false,
-            "request_details": "Need this roof done like yesterday"
+            "confirm": false
         }
     },
     {
@@ -40,14 +42,15 @@
             "employee": 1,
             "customer": 1,
             "service_type": 1,
-            "request_date": "2022-10-23",
-            "scheduled": false,
-            "date_completed": "2022-11-07",
             "progress": 1,
+            "request_details": "Need this roof done like yesterday",
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaE-uOezaMU-1YTPWJjrozNEjesrJoecy-RA&usqp=CAU",
+            "request_date": "2022-10-23",
+            "date_completed": "2022-11-07",
+            "scheduled": false,
             "consultation": false,
             "completed": false,
-            "confirm": false,
-            "request_details": "Need this roof done like yesterday"
+            "confirm": false
         }
     }
 ]
