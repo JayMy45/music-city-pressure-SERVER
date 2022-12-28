@@ -46,7 +46,7 @@ class ServiceTypeView(ViewSet):
         if user.is_staff:
 
             required_fields = ['name', 'description',
-                                'details', 'equipment_id']
+                                'details', 'tool']
             missing_fields = 'You are missing'
             is_fields_missing = False
 
@@ -65,8 +65,8 @@ class ServiceTypeView(ViewSet):
             new_service.details = request.data["details"]
             new_service.price = request.data["price"]
 
-            equipment_id = Equipment.objects.get(pk=request.data["equipment_id"])
-            new_service.equipment_id = equipment_id
+            tool = Equipment.objects.get(pk=request.data["tool"])
+            new_service.tool = tool
             new_service.save()
         
         else: 
@@ -94,8 +94,8 @@ class ServiceTypeView(ViewSet):
             service.description = request.data["description"]
             service.details = request.data["details"]
             service.price = request.data["price"]
-            equipment = Equipment.objects.get(pk=request.data["equipment_id"])
-            service.equipment_id = equipment
+            equipment = Equipment.objects.get(pk=request.data["tool"])
+            service.tool = equipment
             
         else:
             return Response({"message": "This function is not available to customers"}, status = status.HTTP_403_FORBIDDEN)
@@ -117,4 +117,4 @@ class ServiceTypeView(ViewSet):
 class ServiceTypeSerializer(serializers.ModelSerializer):
     class Meta:
         model = ServiceType
-        fields = ('id', 'name','description', 'details', 'price', 'equipment_id',)
+        fields = ('id', 'name','description', 'details', 'price', 'tool',)

@@ -10,7 +10,7 @@
         "model": "mcpressureapi.equipment",
         "pk": 2,
         "fields": {
-            "label": "Acid"
+            "label": "Sodium HypoChlorate 12.5% 'Bleach'"
         }
     },
     {
@@ -23,6 +23,27 @@
     {
         "model": "mcpressureapi.equipment",
         "pk": 4,
+        "fields": {
+            "label": "Southern Slang 'Soft Wash Surfactant'"
+        }
+    },
+    {
+        "model": "mcpressureapi.equipment",
+        "pk": 5,
+        "fields": {
+            "label": "EaCo Chem OneRestore Glass"
+        }
+    },
+    {
+        "model": "mcpressureapi.equipment",
+        "pk": 6,
+        "fields": {
+            "label": "Gutter Grenade"
+        }
+    },
+    {
+        "model": "mcpressureapi.equipment",
+        "pk": 7,
         "fields": {
             "label": "Moss Reducer"
         }
