@@ -46,7 +46,7 @@ class ServiceTypeView(ViewSet):
         if user.is_staff:
 
             required_fields = ['name', 'description',
-                                'details', 'tool']
+                                'details', 'tools']
             missing_fields = 'You are missing'
             is_fields_missing = False
 
@@ -58,10 +58,10 @@ class ServiceTypeView(ViewSet):
             if is_fields_missing:
                     return Response({"message": missing_fields}, status = status.HTTP_400_BAD_REQUEST)
             
-            tool = request.data["tool"]
-            for too in tool:
+            tools = request.data["tools"]
+            for tool in tools:
                 try:
-                    tool_to_assign = Equipment.objects.get(pk=too)
+                    tools_to_assign = Equipment.objects.get(pk=tool)
                 except Equipment.DoesNotExist:
                     return Response({"message": "The tool you specified does not exist"}, status = status.HTTP_404_NOT_FOUND)
 
@@ -74,12 +74,12 @@ class ServiceTypeView(ViewSet):
                 price = request.data["price"]
             )
 
-            for too in tool:
-                tool_to_assign = Equipment.objects.get(pk=too)
-                service_tool = ServiceTypeEquipment()
-                service_tool.equipment_id = tool_to_assign
-                service_tool.service_type_id = service
-                service_tool.save()
+            for tool in tools:
+                tools_to_assign = Equipment.objects.get(pk=tool)
+                service_tools = ServiceTypeEquipment()
+                service_tools.equipment_id = tools_to_assign
+                service_tools.service_type_id = service
+                service_tools.save()
 
 
             # new_service.tool = tool
@@ -136,7 +136,7 @@ class ToolSerializer(serializers.ModelSerializer):
         fields = ('id', 'label',)
 
 class ServiceTypeSerializer(serializers.ModelSerializer):
-    tool = ToolSerializer(many=True)
+    tools = ToolSerializer(many=True)
     class Meta:
         model = ServiceType
-        fields = ('id', 'name','description', 'details', 'price', 'tool',)
+        fields = ('id', 'name','description', 'details', 'price', 'tools',)

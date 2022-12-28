@@ -8,7 +8,7 @@
             "description": "Using gentle stream to wash house siding",
             "details": "Soft washing is a cleaning technique that uses low-pressure water to safely clean the exterior surfaces of a house. This method also uses cleaning solutions to effectively kill mold, mildew, moss, bacteria, and other microorganisms. Due to the use of lower water pressure, this method is ideal for cleaning more the more fragile surfaces of your home’s exterior. These surfaces would be damaged if you used higher water pressure.",
             "price": 250,
-            "tool": [
+            "tools": [
                 1
             ]
         }
@@ -22,7 +22,7 @@
             "description": "Pressure washing is a cleaning method that uses high-pressure water to clean exterior surfaces.",
             "details": "Pressure washing is a cleaning method that uses high-pressure water to clean exterior surfaces. It is typically used on hardscapes such as driveways, sidewalks, and decks. Most of the time, the high pressure alone is enough to blast away dirt, dust, mold, mud, gum, and other unwanted substances. There is another version of pressure washing called power washing. It is essentially the same technique, except for the use of hot water.",
             "price": 250,
-            "tool": [
+            "tools": [
                 1,
                 2
             ]
@@ -37,7 +37,7 @@
             "description": "Using soft wash to remove debris from roofing",
             "details": "A clean roof requires maintenance to keep it looking new and most importantly providing protection to your family or tenants alike.  We use Soft Wash techniques to help keep the integrity of your roof. We can also treat for moss growth. While some of this is dirt, dust and pollen, much of it is lichen and algae. And while the dirt may wash off the next time it rains, the algae is there to stay. This can make your home look much older and detract from the overall appearance. Not only that, but algae and lichen can shorten the lifespan of your roof, causing you to replace your shingles more often. If you notice your roof beginning to look streaked and dark",
             "price": 250,
-            "tool": [
+            "tools": [
                 1,
                 3
             ]
