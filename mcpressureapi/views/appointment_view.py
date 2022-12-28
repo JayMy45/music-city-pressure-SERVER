@@ -251,4 +251,5 @@ class AppointmentsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Appointments
         fields = ('id', 'service_type','completed', 'progress', 'consultation', 
-                  'request_details', 'request_date', 'customer', 'scheduled', 'confirm', )
+                  'request_details', 'request_date', 'customer', 'scheduled', 
+                  'image', 'confirm', )
