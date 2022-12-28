@@ -4,7 +4,7 @@ from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
 from django.contrib.auth.models import User
-from mcpressureapi.models import ServiceType, Equipment
+from mcpressureapi.models import ServiceType, Equipment, ServiceTypeEquipment
 
 class ServiceTypeView(ViewSet):
     """Music City Pressure API ServiceTicket view"""
@@ -46,7 +46,7 @@ class ServiceTypeView(ViewSet):
         if user.is_staff:
 
             required_fields = ['name', 'description',
-                                'details', 'tool']
+                                'details', 'tools']
             missing_fields = 'You are missing'
             is_fields_missing = False
 
@@ -57,22 +57,38 @@ class ServiceTypeView(ViewSet):
                     is_fields_missing = True
             if is_fields_missing:
                     return Response({"message": missing_fields}, status = status.HTTP_400_BAD_REQUEST)
+            
+            tools = request.data["tools"]
+            for tool in tools:
+                try:
+                    tools_to_assign = Equipment.objects.get(pk=tool)
+                except Equipment.DoesNotExist:
+                    return Response({"message": "The tool you specified does not exist"}, status = status.HTTP_404_NOT_FOUND)
 
-            new_service = ServiceType()
-            new_service.name = request.data["name"]
-            new_service.label = request.data["label"]
-            new_service.description = request.data["description"]
-            new_service.details = request.data["details"]
-            new_service.price = request.data["price"]
 
-            tool = Equipment.objects.get(pk=request.data["tool"])
-            new_service.tool = tool
-            new_service.save()
+            service = ServiceType.objects.create(
+                name = request.data["name"],
+                label = request.data["label"],
+                description = request.data["description"],
+                details = request.data["details"],
+                price = request.data["price"]
+            )
+
+            for tool in tools:
+                tools_to_assign = Equipment.objects.get(pk=tool)
+                service_tools = ServiceTypeEquipment()
+                service_tools.equipment_id = tools_to_assign
+                service_tools.service_type_id = service
+                service_tools.save()
+
+
+            # new_service.tool = tool
+            # new_service.save()
         
         else: 
             return Response({"message": "This function is not available to customers"}, status = status.HTTP_403_FORBIDDEN)
        
-        serialized =  ServiceTypeSerializer(new_service, many=False)
+        serialized =  ServiceTypeSerializer(service, many=False)
         return Response(serialized.data, status=status.HTTP_201_CREATED)
 
     def update(self, request, pk=None):
@@ -114,7 +130,13 @@ class ServiceTypeView(ViewSet):
 
 
 
+class ToolSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Equipment
+        fields = ('id', 'label',)
+
 class ServiceTypeSerializer(serializers.ModelSerializer):
+    tools = ToolSerializer(many=True)
     class Meta:
         model = ServiceType
-        fields = ('id', 'name','description', 'details', 'price', 'tool',)
+        fields = ('id', 'name','description', 'details', 'price', 'tools',)
