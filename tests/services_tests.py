@@ -27,9 +27,9 @@ class ServiceTests(APITestCase):
         service.details = "Pressure with washing"
         service.price = 250
         equipment_id = Equipment.objects.get(pk=2)
-        service.equipment_id = equipment_id
-
         service.save()
+        service.tools.add(equipment_id)
+
 
         # Initiate request and store response
         response = self.client.get(f"/services/{service.id}")
@@ -47,4 +47,4 @@ class ServiceTests(APITestCase):
         self.assertEqual(json_response["description"], "Washing with pressure")
         self.assertEqual(json_response["details"], "Pressure with washing")
         self.assertEqual(json_response["price"], 250)
-        self.assertEqual(json_response["equipment_id"]["id"], 2)
+        self.assertEqual(json_response["tools"]["id"], 2)
