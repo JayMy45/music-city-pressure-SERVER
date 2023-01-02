@@ -50,6 +50,7 @@ class EmployeeView(ViewSet):
         employee.address = request.data['address']
         employee.phone_number = request.data['phone_number']
         employee.salary = request.data['salary']
+        employee.image = request.data['image']
 
         employee.save()
         return Response(None, status=status.HTTP_204_NO_CONTENT)
@@ -66,4 +67,4 @@ class EmployeeSerializer(serializers.ModelSerializer):
     class Meta:
         model =  Employee
         fields = ('id','full_name', 'address', 'phone_number', 'bio', 
-                  'salary', 'user',)
+                  'salary', 'user', 'image', )

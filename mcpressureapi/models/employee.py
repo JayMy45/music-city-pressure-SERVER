@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 class Employee(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.CharField(max_length=200)
+    image = models.CharField(max_length=500)
     address = models.CharField(max_length=200)
     date_hired = models.DateField(null=True, blank=True, auto_now=False, auto_now_add=False)
     phone_number = PhoneField(blank=True, help_text='Contact phone number')
