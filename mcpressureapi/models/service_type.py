@@ -8,4 +8,3 @@ class ServiceType(models.Model):
     details = models.CharField(max_length=300)
     price = models.FloatField(null=True, blank=True)
     tools = models.ManyToManyField('Equipment', blank=True, related_name="equipment_id", through='ServiceTypeEquipment')
-    # attendees = models.ManyToManyField('Gamer', blank=True, through='GamerEvent')
