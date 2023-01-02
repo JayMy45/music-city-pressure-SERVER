@@ -24,12 +24,28 @@ class EmployeeView(ViewSet):
         serialized = EmployeeSerializer(employee, many=True)
         return Response(serialized.data, status=status.HTTP_200_OK)
 
+    def retrieve(self, request, pk=None):
+        """Handle GET requests for single employee 
+
+        Returns:
+            Response -- JSON serialized employee
+        """
+
+        try:
+            employee = Employee.objects.get(pk=pk)
+        except Employee.DoesNotExist:
+            return Response({"message": "The employee you specified does not exist"}, status = status.HTTP_404_NOT_FOUND)
+
+        serialized = EmployeeSerializer(employee, context={'request': request})
+        return Response(serialized.data, status=status.HTTP_200_OK)
+
+
 
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model =  User
-        fields = ('id','is_staff', )
+        fields = ('id','is_staff', "is_superuser" )
 
 class EmployeeSerializer(serializers.ModelSerializer):
     user = UserSerializer(many=False)

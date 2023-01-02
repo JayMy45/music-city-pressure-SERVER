@@ -11,5 +11,18 @@
             "salary": "100000",
             "specialty": "Power Washing"
         }
+    },
+    {
+        "model": "mcpressureapi.employee",
+        "pk": 2,
+        "fields": {
+            "user": 3,
+            "bio": "Love to serve",
+            "address": "3302 West Brook Cir",
+            "date_hired": "2022-01-02",
+            "phone_number": "6157777289",
+            "salary": "100000",
+            "specialty": "Soft Washing"
+        }
     }
 ]
