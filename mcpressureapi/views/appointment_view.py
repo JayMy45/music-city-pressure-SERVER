@@ -144,7 +144,7 @@ class AppointmentView(ViewSet):
         """Handles PUT request of single customer
 
         Return:
-            Response - No response body status just (201)
+            Response - No response body just message and status (201, 204, 400)
         """ 
 
         user = User.objects.get(pk=request.auth.user_id)

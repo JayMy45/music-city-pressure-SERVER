@@ -39,6 +39,21 @@ class EmployeeView(ViewSet):
         serialized = EmployeeSerializer(employee, context={'request': request})
         return Response(serialized.data, status=status.HTTP_200_OK)
 
+    def update(self, request, pk=None):
+        """Handles PUT request of single employee
+
+        Return:
+            Response - No response body status just (201)
+        """
+        employee = Employee.objects.get(pk=pk)
+        employee.bio = request.data['bio']
+        employee.address = request.data['address']
+        employee.phone_number = request.data['phone_number']
+        employee.salary = request.data['salary']
+        employee.specialty = request.data['specialty']
+
+        employee.save()
+        return Response(None, status=status.HTTP_204_NO_CONTENT)
 
 
 
