@@ -68,6 +68,7 @@ class ServiceTypeView(ViewSet):
 
             service = ServiceType.objects.create(
                 name = request.data["name"],
+                image=request.data["image"],
                 label = request.data["label"],
                 description = request.data["description"],
                 details = request.data["details"],

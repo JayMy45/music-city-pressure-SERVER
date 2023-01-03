@@ -60,11 +60,11 @@ class EmployeeView(ViewSet):
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model =  User
-        fields = ('id','is_staff', "is_superuser" )
+        fields = ('id','is_staff', 'is_superuser', 'first_name', )
 
 class EmployeeSerializer(serializers.ModelSerializer):
     user = UserSerializer(many=False)
     class Meta:
         model =  Employee
         fields = ('id','full_name', 'address', 'phone_number', 'bio', 
-                  'salary', 'user', 'image', )
+                  'salary', 'user', 'image',  )
