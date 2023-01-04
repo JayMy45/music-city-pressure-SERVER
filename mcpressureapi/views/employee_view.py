@@ -4,7 +4,7 @@ from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
 from django.contrib.auth.models import User
-from mcpressureapi.models import Employee
+from mcpressureapi.models import Employee, Specialty
 
 class EmployeeView(ViewSet):
     """Get request to get all Employees
@@ -69,8 +69,14 @@ class UserSerializer(serializers.ModelSerializer):
         model =  User
         fields = ('id','is_staff', 'is_superuser', 'first_name', )
 
+class SpecialtySerializer(serializers.ModelSerializer):
+    class Meta:
+        model =  Specialty
+        fields = ('id','label', )
+
 class EmployeeSerializer(serializers.ModelSerializer):
     user = UserSerializer(many=False)
+    specialty = SpecialtySerializer(many=True)
     class Meta:
         model =  Employee
         fields = ('id','full_name', 'address', 'phone_number', 'bio', 
