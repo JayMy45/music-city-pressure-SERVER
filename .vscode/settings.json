@@ -22,6 +22,7 @@
         "servicecall",
         "servicetype",
         "servicetypeequipment",
+        "Specialtyserializer",
         "viewsets",
         "WWLJ"
     ]
