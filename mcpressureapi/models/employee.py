@@ -11,7 +11,8 @@ class Employee(models.Model):
     date_hired = models.DateField(null=True, blank=True, auto_now=False, auto_now_add=False)
     phone_number = PhoneField(blank=True, help_text='Contact phone number')
     salary = MoneyField(max_digits=14, decimal_places=2, default_currency='USD')
-    specialty = models.CharField(max_length=155)
+    specialty = models.ManyToManyField('Specialty', blank=True, through='EmployeeServiceTypeSpecialty')
+
 
     @property
     def full_name(self):

@@ -1,0 +1,30 @@
+[
+    {
+        "model": "mcpressureapi.specialty",
+        "pk": 1,
+        "fields": {
+            "label": "Soft Wash"
+        }
+    },
+    {
+        "model": "mcpressureapi.specialty",
+        "pk": 2,
+        "fields": {
+            "label": "Pressure Wash"
+        }
+    },
+    {
+        "model": "mcpressureapi.specialty",
+        "pk": 3,
+        "fields": {
+            "label": "Gutters"
+        }
+    },
+    {
+        "model": "mcpressureapi.specialty",
+        "pk": 4,
+        "fields": {
+            "label": "Roof"
+        }
+    }
+]

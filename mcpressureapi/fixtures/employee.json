@@ -11,7 +11,10 @@
             "phone_number": "4041237890",
             "salary": 100000,
             "salary_currency": "USD",
-            "specialty": "Power Washing"
+            "specialty": [
+                1,
+                2
+            ]
         }
     },
     {
@@ -26,7 +29,10 @@
             "phone_number": "6157777289",
             "salary": 100000,
             "salary_currency": "USD",
-            "specialty": "Soft Washing"
+            "specialty": [
+                1,
+                3
+            ]
         }
     }
 ]
