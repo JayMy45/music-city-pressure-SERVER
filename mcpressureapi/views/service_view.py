@@ -140,4 +140,4 @@ class ServiceTypeSerializer(serializers.ModelSerializer):
     tools = ToolSerializer(many=True)
     class Meta:
         model = ServiceType
-        fields = ('id', 'name','description', 'details', 'price', 'tools', 'image',)
+        fields = ('id', 'name','description', 'details', 'price', 'tools', 'image','label',)

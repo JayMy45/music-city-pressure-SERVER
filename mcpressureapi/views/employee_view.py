@@ -55,7 +55,13 @@ class EmployeeView(ViewSet):
         employee.save()
         return Response(None, status=status.HTTP_204_NO_CONTENT)
 
-
+    def destroy(self, request, pk):
+        try:
+            service = Employee.objects.get(pk=pk)
+            service.delete()
+            return Response({"message": "This service has been DELETED"}, status=status.HTTP_204_NO_CONTENT)
+        except Employee.DoesNotExist:
+            return Response({"message": "The service you specified does not exist"}, status = status.HTTP_404_NOT_FOUND)
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:

@@ -9,7 +9,8 @@
             "address": "1544 RoundWay Rd.",
             "date_hired": "2022-12-07",
             "phone_number": "4041237890",
-            "salary": "100000",
+            "salary": 100000,
+            "salary_currency": "USD",
             "specialty": "Power Washing"
         }
     },
@@ -23,7 +24,8 @@
             "address": "3302 West Brook Cir",
             "date_hired": "2022-01-02",
             "phone_number": "6157777289",
-            "salary": "100000",
+            "salary": 100000,
+            "salary_currency": "USD",
             "specialty": "Soft Washing"
         }
     }

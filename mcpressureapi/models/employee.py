@@ -1,5 +1,6 @@
 from django.db import models
 from phone_field import PhoneField
+from djmoney.models.fields import MoneyField
 from django.contrib.auth.models import User
 
 class Employee(models.Model):
@@ -9,7 +10,7 @@ class Employee(models.Model):
     address = models.CharField(max_length=200)
     date_hired = models.DateField(null=True, blank=True, auto_now=False, auto_now_add=False)
     phone_number = PhoneField(blank=True, help_text='Contact phone number')
-    salary = models.FloatField()
+    salary = MoneyField(max_digits=14, decimal_places=2, default_currency='USD')
     specialty = models.CharField(max_length=155)
 
     @property

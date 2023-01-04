@@ -9,6 +9,7 @@
         "appt",
         "authtoken",
         "corsheaders",
+        "djmoney",
         "Ewyg",
         "hardscapes",
         "hfap",
