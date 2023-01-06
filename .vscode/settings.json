@@ -10,6 +10,7 @@
         "authtoken",
         "corsheaders",
         "djmoney",
+        "employeeappointment",
         "employeeservicetypespecialty",
         "Ewyg",
         "hardscapes",

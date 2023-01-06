@@ -1,7 +1,7 @@
 from django.db import models
 
 class Appointments(models.Model):
-    employee = models.ForeignKey("Employee", on_delete=models.CASCADE, null=True, blank=True)
+    employee = models.ManyToManyField("Employee", blank=True, related_name="employee_id", through='EmployeeAppointment')
     customer = models.ForeignKey("Customer", on_delete=models.CASCADE, null=True, blank=True, related_name='confirm')
     service_type = models.ForeignKey("ServiceType", null=True, blank=True, on_delete=models.CASCADE)
     progress = models.ForeignKey("Progress", null=True, blank=True, on_delete=models.CASCADE)

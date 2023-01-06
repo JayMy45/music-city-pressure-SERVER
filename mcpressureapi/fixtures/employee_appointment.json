@@ -1,0 +1,26 @@
+[
+    {
+        "model": "mcpressureapi.employeeappointment",
+        "pk": 1,
+        "fields": {
+            "employee_id": 1,
+            "appointment_id": 3
+        }
+    },
+    {
+        "model": "mcpressureapi.employeeappointment",
+        "pk": 2,
+        "fields": {
+            "employee_id": 2,
+            "appointment_id": 3
+        }
+    },
+    {
+        "model": "mcpressureapi.employeeappointment",
+        "pk": 3,
+        "fields": {
+            "employee_id": 1,
+            "appointment_id": 2
+        }
+    }
+]

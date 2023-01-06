@@ -3,7 +3,7 @@
         "model": "mcpressureapi.appointments",
         "pk": 1,
         "fields": {
-            "employee": 1,
+            "employee": [],
             "customer": 1,
             "service_type": 1,
             "progress": 1,
@@ -21,7 +21,9 @@
         "model": "mcpressureapi.appointments",
         "pk": 2,
         "fields": {
-            "employee": 1,
+            "employee": [
+                1
+            ],
             "customer": 1,
             "service_type": 1,
             "progress": 1,
@@ -39,7 +41,10 @@
         "model": "mcpressureapi.appointments",
         "pk": 3,
         "fields": {
-            "employee": 1,
+            "employee": [
+                1,
+                2
+            ],
             "customer": 1,
             "service_type": 1,
             "progress": 1,

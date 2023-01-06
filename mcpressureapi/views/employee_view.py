@@ -19,9 +19,13 @@ class EmployeeView(ViewSet):
         Returns:
             Response -- JSON serialized list of Employees
         """
-
-        
+        # user = User.objects.get(pk=request.auth.user_id)
+        # if user.is_staff:
         employee = Employee.objects.all()
+
+        # else: 
+        #     return Response(serialized.data, status=status.HTTP_401_UNAUTHORIZED)
+
         serialized = EmployeeSerializer(employee, many=True)
         return Response(serialized.data, status=status.HTTP_200_OK)
 
@@ -67,7 +71,7 @@ class EmployeeView(ViewSet):
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model =  User
-        fields = ('id','is_staff', 'is_superuser', 'first_name', )
+        fields = ('id','is_staff', 'is_superuser', 'first_name', 'email', )
 
 class SpecialtySerializer(serializers.ModelSerializer):
     class Meta:

@@ -233,6 +233,12 @@ class CustomerSerializer(serializers.ModelSerializer):
         model = Customer
         fields = ('id', 'full_name', 'user', 'address',)
 
+class EmployeeSerializer(serializers.ModelSerializer):
+    user = UserSerializer(many=False)
+    class Meta:
+        model = Employee
+        fields = ('id', 'full_name', 'user', 'address',)
+
 class ProgressSerializer(serializers.ModelSerializer):
     class Meta:
         model =  Progress
@@ -248,8 +254,9 @@ class AppointmentsSerializer(serializers.ModelSerializer):
     service_type = ServiceTypeSerializer(many=False)
     progress = ProgressSerializer(many=False)
     customer = CustomerSerializer(many=False)
+    employee = EmployeeSerializer(many=True)
     class Meta:
         model = Appointments
         fields = ('id', 'service_type','completed', 'progress', 'consultation', 
-                  'request_details', 'request_date', 'customer', 'scheduled', 
+                  'request_details', 'request_date', 'customer', 'employee', 'scheduled', 
                   'image', 'confirm', )
