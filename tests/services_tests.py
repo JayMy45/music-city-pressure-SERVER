@@ -23,12 +23,17 @@ class ServiceTests(APITestCase):
         service = ServiceType()
         service.name = "Side Walk Pressure Wash"
         service.label = "Pressure Wash"
+        service.image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJNN_FhsZzL0m-FZq2Fu8PQunmaF_lKBJBDEpe2ihMlDQ60JyFD5Ns3ru3ThsXy7KWAdc&usqp=CAU"
         service.description = "Washing with pressure"
         service.details = "Pressure with washing"
         service.price = 250
-        equipment_id = Equipment.objects.get(pk=2)
+        eq1 = Equipment.objects.get(pk=1)
+        eq2 = Equipment.objects.get(pk=2)
         service.save()
-        service.tools.add(equipment_id)
+
+        
+        service.tools.set([eq1,eq2])
+        # service.tools.add(equipment_id)
 
 
         # Initiate request and store response
@@ -41,10 +46,11 @@ class ServiceTests(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         # Assert that the values are correct
-        self.assertEqual(json_response["label"], "Pressure Nozzle")
         self.assertEqual(json_response["name"], "Side Walk Pressure Wash")
+        self.assertEqual(json_response["image"], "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJNN_FhsZzL0m-FZq2Fu8PQunmaF_lKBJBDEpe2ihMlDQ60JyFD5Ns3ru3ThsXy7KWAdc&usqp=CAU")
         self.assertEqual(json_response["label"], "Pressure Wash")
         self.assertEqual(json_response["description"], "Washing with pressure")
         self.assertEqual(json_response["details"], "Pressure with washing")
         self.assertEqual(json_response["price"], 250)
-        self.assertEqual(json_response["tools"]["id"], 2)
+        self.assertEqual(json_response["tools"][0]["id"], 1)
+        self.assertEqual(json_response["tools"][1]["id"], 2)

@@ -9,16 +9,22 @@
         "appt",
         "authtoken",
         "corsheaders",
+        "djmoney",
+        "employeeappointment",
+        "employeeservicetypespecialty",
         "Ewyg",
         "hardscapes",
         "hfap",
         "jaymy",
+        "KXWCC",
         "mcpressureapi",
         "musiccitypressure",
         "Nyght",
         "servicecall",
         "servicetype",
         "servicetypeequipment",
-        "viewsets"
+        "Specialtyserializer",
+        "viewsets",
+        "WWLJ"
     ]
 }

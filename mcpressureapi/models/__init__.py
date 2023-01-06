@@ -9,3 +9,4 @@ from .equipment import Equipment
 from .reviews import Reviews
 from .emp_service_type_specialty import EmployeeServiceTypeSpecialty
 from .specialty import Specialty
+from .employee_appointment import EmployeeAppointment

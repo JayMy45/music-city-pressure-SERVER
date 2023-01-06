@@ -6,3 +6,4 @@ from .customer_view import CustomerView
 from .employee_view import EmployeeView
 from .equipment_view import EquipmentView
 from .progress_view import ProgressView
+from .specialty_view import SpecialtyView

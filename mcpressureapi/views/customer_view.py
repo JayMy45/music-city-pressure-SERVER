@@ -29,6 +29,21 @@ class CustomerView(ViewSet):
         serialized = CustomerSerializer(customer, many=True)
         return Response(serialized.data, status=status.HTTP_200_OK)
 
+    def retrieve(self, request, pk=None):
+        """Handle GET requests for single customer 
+
+        Returns:
+            Response -- JSON serialized customer
+        """
+
+        try:
+            customer = Customer.objects.get(pk=pk)
+        except Customer.DoesNotExist:
+            return Response({"message": "The customer you specified does not exist"}, status = status.HTTP_404_NOT_FOUND)
+
+        serialized = CustomerSerializer(customer, context={'request': request})
+        return Response(serialized.data, status=status.HTTP_200_OK)
+
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model =  User

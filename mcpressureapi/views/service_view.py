@@ -1,4 +1,4 @@
-"""View module for handling requests for customer data"""
+"""View module for handling requests for Service data"""
 from django.http import HttpResponseServerError
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
@@ -68,6 +68,7 @@ class ServiceTypeView(ViewSet):
 
             service = ServiceType.objects.create(
                 name = request.data["name"],
+                image=request.data["image"],
                 label = request.data["label"],
                 description = request.data["description"],
                 details = request.data["details"],
@@ -139,4 +140,4 @@ class ServiceTypeSerializer(serializers.ModelSerializer):
     tools = ToolSerializer(many=True)
     class Meta:
         model = ServiceType
-        fields = ('id', 'name','description', 'details', 'price', 'tools', 'image',)
+        fields = ('id', 'name','description', 'details', 'price', 'tools', 'image','label',)
