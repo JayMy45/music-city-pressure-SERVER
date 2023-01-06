@@ -5,7 +5,7 @@ from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
 from django.contrib.auth.models import User
-from mcpressureapi.models import Appointments, Customer, Employee, ServiceType, Progress
+from mcpressureapi.models import Appointments, Customer, Employee, ServiceType, Progress, EmployeeAppointment
 
 class AppointmentView(ViewSet):
     """Music City Pressure API Appointment view"""
@@ -173,6 +173,13 @@ class AppointmentView(ViewSet):
             if is_fields_missing:
                     return Response({"message": missing_fields}, status = status.HTTP_400_BAD_REQUEST)
 
+            employees = request.data["employee"]
+            for employee in employees:
+                try:
+                    employees_to_assign = Employee.objects.get(pk=employee)
+                except Employee.DoesNotExist:
+                    return Response({"message": "The employee you specified does not exist"}, status = status.HTTP_404_NOT_FOUND)
+
             # if staff is updating appointment
             service_type = ServiceType.objects.get(pk=request.data["service_type"])
             appointment.service_type = service_type
@@ -183,6 +190,13 @@ class AppointmentView(ViewSet):
             appointment.confirm = request.data["confirm"]
             appointment.consultation = request.data["consultation"]
             appointment.completed = request.data["completed"]
+
+            for employee in employees:
+                employees_to_assign = Employee.objects.get(pk=employee)
+                employee_appointment = EmployeeAppointment()
+                employee_appointment.employee_id = employees_to_assign
+                employee_appointment.appointment_id = appointment
+                employee_appointment.save()
         
         else:
             # determine if data is missing from PUT request (customer)
@@ -197,6 +211,8 @@ class AppointmentView(ViewSet):
                     is_fields_missing = True
             if is_fields_missing:
                     return Response({"message": missing_fields}, status = status.HTTP_400_BAD_REQUEST)
+
+           
 
             # if customer is updating an appointment   
             service_type = ServiceType.objects.get(pk=request.data["service_type"])
