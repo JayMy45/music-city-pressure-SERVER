@@ -10,22 +10,6 @@ from mcpressureapi.models import Appointments, Customer, Employee, ServiceType, 
 class AppointmentView(ViewSet):
     """Music City Pressure API Appointment view"""
 
-    @action(methods=['post'], detail=[True])
-    def confirm(self, request, pk):
-        """Post request for a user to confirm an appointment"""
-        customer = Customer.objects.get(user=request.auth.user)
-        appointment = Appointments.objects.get(pk=pk)
-        appointment.confirm.add(customer)
-        return Response({'message': 'Appointment Confirmed'}, status=status.HTTP_201_CREATED)
-
-    @action(methods=['delete'], detail=[True])
-    def remove(self, request, pk):
-        """Post request for a user to confirm an appointment"""
-        customer = Customer.objects.get(user=request.auth.user)
-        appointment = Appointments.objects.get(pk=pk)
-        appointment.confirm.remove(customer)
-        return Response({'message': 'Appointment Confirmation Removed'}, status=status.HTTP_204_NO_CONTENT)
-     
     def list(self, request):
         """Handle GET requests to get all Appointments
 
