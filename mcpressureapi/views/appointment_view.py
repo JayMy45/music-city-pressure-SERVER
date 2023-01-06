@@ -173,12 +173,8 @@ class AppointmentView(ViewSet):
             if is_fields_missing:
                     return Response({"message": missing_fields}, status = status.HTTP_400_BAD_REQUEST)
 
-            employees = request.data["employee"]
-            for employee in employees:
-                try:
-                    employees_to_assign = Employee.objects.get(pk=employee)
-                except Employee.DoesNotExist:
-                    return Response({"message": "The employee you specified does not exist"}, status = status.HTTP_404_NOT_FOUND)
+            
+            employees = request.data.get("employee", None)
 
             # if staff is updating appointment
             service_type = ServiceType.objects.get(pk=request.data["service_type"])
@@ -190,13 +186,16 @@ class AppointmentView(ViewSet):
             appointment.confirm = request.data["confirm"]
             appointment.consultation = request.data["consultation"]
             appointment.completed = request.data["completed"]
+            
+            appointment.save()
 
-            for employee in employees:
-                employees_to_assign = Employee.objects.get(pk=employee)
-                employee_appointment = EmployeeAppointment()
-                employee_appointment.employee_id = employees_to_assign
-                employee_appointment.appointment_id = appointment
-                employee_appointment.save()
+            if employees is not None:
+                for employee in employees:
+                    employees_to_assign = Employee.objects.get(pk=employee)
+                    employee_appointment = EmployeeAppointment()
+                    employee_appointment.employee_id = employees_to_assign
+                    employee_appointment.appointment_id = appointment
+                    employee_appointment.save()
         
         else:
             # determine if data is missing from PUT request (customer)
@@ -225,7 +224,7 @@ class AppointmentView(ViewSet):
             appointment.consultation = request.data["consultation"]
             appointment.request_details = request.data["request_details"]
 
-        appointment.save()
+            appointment.save()
 
         return Response(None, status=status.HTTP_204_NO_CONTENT)
 
