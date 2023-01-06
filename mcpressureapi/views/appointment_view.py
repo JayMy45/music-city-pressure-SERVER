@@ -193,8 +193,8 @@ class AppointmentView(ViewSet):
                 for employee in employees:
                     employees_to_assign = Employee.objects.get(pk=employee)
                     employee_appointment = EmployeeAppointment()
-                    employee_appointment.employee_id = employees_to_assign
-                    employee_appointment.appointment_id = appointment
+                    employee_appointment.employee = employees_to_assign
+                    employee_appointment.appointment = appointment
                     employee_appointment.save()
         
         else:
