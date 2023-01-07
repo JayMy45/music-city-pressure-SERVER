@@ -72,8 +72,8 @@ class ServiceTypeView(ViewSet):
             for tool in tools:
                 tools_to_assign = Equipment.objects.get(pk=tool)
                 service_tools = ServiceTypeEquipment()
-                service_tools.equipment_id = tools_to_assign
-                service_tools.service_type_id = service
+                service_tools.equipment = tools_to_assign
+                service_tools.service_type = service
                 service_tools.save()
 
 
@@ -98,17 +98,26 @@ class ServiceTypeView(ViewSet):
         user = User.objects.get(pk=request.auth.user_id)
         if user.is_staff:
 
+            tools = request.data["tools"]
+
             service.name = request.data["name"]
+            service.image = request.data["image"]
+            service.label = request.data["label"]
             service.description = request.data["description"]
             service.details = request.data["details"]
             service.price = request.data["price"]
-            equipment = Equipment.objects.get(pk=request.data["tool"])
-            service.tool = equipment
+            service.save()
+
+            for tool in tools:
+                tools_to_assign = Equipment.objects.get(pk=tool)
+                service_tools = ServiceTypeEquipment()
+                service_tools.equipment = tools_to_assign
+                service_tools.service_type = service
+                service_tools.save()
             
         else:
             return Response({"message": "This function is not available to customers"}, status = status.HTTP_403_FORBIDDEN)
 
-        service.save()
         serialized =  ServiceTypeSerializer(service, many=False)
         return Response(serialized.data, status=status.HTTP_201_CREATED)
 
