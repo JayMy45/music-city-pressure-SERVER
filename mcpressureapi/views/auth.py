@@ -29,6 +29,7 @@ def login_user(request):
         data = {
             'valid': True,
             'token': token.key,
+            'user_id': authenticated_user.id,
             'staff': authenticated_user.is_staff,
             'supervisor': authenticated_user.is_superuser
         }

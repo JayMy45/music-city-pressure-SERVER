@@ -3,6 +3,7 @@ from django.http import HttpResponseServerError
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
+from rest_framework.decorators import action
 from django.contrib.auth.models import User
 from mcpressureapi.models import Employee, Specialty
 
@@ -12,6 +13,13 @@ class EmployeeView(ViewSet):
     Returns:
         Response -- JSON serialized list of Employees
     """
+
+    @action(methods=['get'], detail=False)
+    def current_employee(self,request):
+        """Get current logged in Employee"""
+        employee = Employee.objects.get(user=request.auth.user)
+        serializer = EmployeeSerializer(employee)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
     def list(self, request):
         """Get request to get all Employees

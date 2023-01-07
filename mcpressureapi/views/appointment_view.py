@@ -5,27 +5,11 @@ from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
 from django.contrib.auth.models import User
-from mcpressureapi.models import Appointments, Customer, Employee, ServiceType, Progress
+from mcpressureapi.models import Appointments, Customer, Employee, ServiceType, Progress, EmployeeAppointment
 
 class AppointmentView(ViewSet):
     """Music City Pressure API Appointment view"""
 
-    @action(methods=['post'], detail=[True])
-    def confirm(self, request, pk):
-        """Post request for a user to confirm an appointment"""
-        customer = Customer.objects.get(user=request.auth.user)
-        appointment = Appointments.objects.get(pk=pk)
-        appointment.confirm.add(customer)
-        return Response({'message': 'Appointment Confirmed'}, status=status.HTTP_201_CREATED)
-
-    @action(methods=['delete'], detail=[True])
-    def remove(self, request, pk):
-        """Post request for a user to confirm an appointment"""
-        customer = Customer.objects.get(user=request.auth.user)
-        appointment = Appointments.objects.get(pk=pk)
-        appointment.confirm.remove(customer)
-        return Response({'message': 'Appointment Confirmation Removed'}, status=status.HTTP_204_NO_CONTENT)
-     
     def list(self, request):
         """Handle GET requests to get all Appointments
 
@@ -173,6 +157,9 @@ class AppointmentView(ViewSet):
             if is_fields_missing:
                     return Response({"message": missing_fields}, status = status.HTTP_400_BAD_REQUEST)
 
+            
+            employees = request.data.get("employee", None)
+
             # if staff is updating appointment
             service_type = ServiceType.objects.get(pk=request.data["service_type"])
             appointment.service_type = service_type
@@ -183,6 +170,16 @@ class AppointmentView(ViewSet):
             appointment.confirm = request.data["confirm"]
             appointment.consultation = request.data["consultation"]
             appointment.completed = request.data["completed"]
+            
+            appointment.save()
+
+            if employees is not None:
+                for employee in employees:
+                    employees_to_assign = Employee.objects.get(pk=employee)
+                    employee_appointment = EmployeeAppointment()
+                    employee_appointment.employee = employees_to_assign
+                    employee_appointment.appointment = appointment
+                    employee_appointment.save()
         
         else:
             # determine if data is missing from PUT request (customer)
@@ -198,6 +195,8 @@ class AppointmentView(ViewSet):
             if is_fields_missing:
                     return Response({"message": missing_fields}, status = status.HTTP_400_BAD_REQUEST)
 
+           
+
             # if customer is updating an appointment   
             service_type = ServiceType.objects.get(pk=request.data["service_type"])
             appointment.service_type = service_type
@@ -209,7 +208,7 @@ class AppointmentView(ViewSet):
             appointment.consultation = request.data["consultation"]
             appointment.request_details = request.data["request_details"]
 
-        appointment.save()
+            appointment.save()
 
         return Response(None, status=status.HTTP_204_NO_CONTENT)
 
