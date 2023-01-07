@@ -59,12 +59,6 @@ class ServiceTypeView(ViewSet):
                     return Response({"message": missing_fields}, status = status.HTTP_400_BAD_REQUEST)
             
             tools = request.data["tools"]
-            for tool in tools:
-                try:
-                    tools_to_assign = Equipment.objects.get(pk=tool)
-                except Equipment.DoesNotExist:
-                    return Response({"message": "The tool you specified does not exist"}, status = status.HTTP_404_NOT_FOUND)
-
 
             service = ServiceType.objects.create(
                 name = request.data["name"],
@@ -83,9 +77,6 @@ class ServiceTypeView(ViewSet):
                 service_tools.save()
 
 
-            # new_service.tool = tool
-            # new_service.save()
-        
         else: 
             return Response({"message": "This function is not available to customers"}, status = status.HTTP_403_FORBIDDEN)
        
