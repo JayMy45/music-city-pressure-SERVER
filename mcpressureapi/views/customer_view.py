@@ -2,6 +2,7 @@ from django.http import HttpResponseServerError
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
+from rest_framework.decorators import action
 from django.contrib.auth.models import User
 from mcpressureapi.models import Customer
 
@@ -11,6 +12,17 @@ class CustomerView(ViewSet):
     Returns:
         Response -- JSON serialized list of Customers
     """
+
+    @action(methods=['get'], detail=False)
+    def current_customer(self,request):
+        """Get current logged in Customer"""
+        # user = User.objects.get(pk=request.auth.user_id)
+        # if user.is_staff:
+        customer = Customer.objects.get(user=request.auth.user)
+
+        serializer = CustomerSerializer(customer)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
 
     def list(self, request):
         """Get request to get all Customers

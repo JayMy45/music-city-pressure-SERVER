@@ -74,22 +74,33 @@ class AppointmentView(ViewSet):
                     return Response({"message": missing_fields}, status = status.HTTP_400_BAD_REQUEST)
 
             # if employee is creating an appointment then the employee will be assigned to the that appt.
-            employee = Employee.objects.get(user=request.auth.user)
+            
+            employees = request.data.get("employee", None)
+
             customer = Customer.objects.get(pk=request.data["customer"])
             service_type = ServiceType.objects.get(pk=request.data["service_type"])
             progress = Progress.objects.get(pk=request.data["progress"])
 
             appointment = Appointments.objects.create(
-                employee=employee,
                 customer=customer,
                 service_type=service_type,
-                request_date=request.data["request_date"],
-                scheduled = False,
                 request_details=request.data["request_details"],
+                request_date=request.data["request_date"],
+                image=request.data["image"],
                 progress = progress,
+                scheduled = False,
                 consultation= False,
                 completed=False,
+                confirm=False,
             )
+
+            if employees is not None:
+                for employee in employees:
+                    employees_to_assign = Employee.objects.get(pk=employee)
+                    employee_appointment = EmployeeAppointment()
+                    employee_appointment.employee = employees_to_assign
+                    employee_appointment.appointment = appointment
+                    employee_appointment.save()
 
         else:
 
@@ -105,6 +116,7 @@ class AppointmentView(ViewSet):
             if is_fields_missing:
                     return Response({"message": missing_fields}, status = status.HTTP_400_BAD_REQUEST)
 
+
             customer = Customer.objects.get(user=request.auth.user)
             service_type = ServiceType.objects.get(pk=request.data["service_type"])
             progress = Progress.objects.get(pk=request.data["progress"])
@@ -114,12 +126,15 @@ class AppointmentView(ViewSet):
                 customer=customer,
                 service_type=service_type,
                 request_date=request.data["request_date"],
-                scheduled = False,
                 request_details=request.data["request_details"],
+                image=request.data["image"],
+                scheduled = False,
                 progress = progress,
                 consultation= False,
                 completed=False,
             )
+
+
     
         serializer = AppointmentsSerializer(appointment)
         return Response(serializer.data, status=status.HTTP_201_CREATED)

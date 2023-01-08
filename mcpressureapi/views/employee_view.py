@@ -17,7 +17,10 @@ class EmployeeView(ViewSet):
     @action(methods=['get'], detail=False)
     def current_employee(self,request):
         """Get current logged in Employee"""
+        # user = User.objects.get(pk=request.auth.user_id)
+        # if user.is_staff:
         employee = Employee.objects.get(user=request.auth.user)
+
         serializer = EmployeeSerializer(employee)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
