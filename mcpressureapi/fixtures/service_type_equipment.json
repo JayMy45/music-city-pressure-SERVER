@@ -3,16 +3,40 @@
         "model": "mcpressureapi.servicetypeequipment",
         "pk": 1,
         "fields": {
-            "equipment_id": 3,
-            "service_type_id": 1
+            "service_type": 1,
+            "equipment_id": 1
         }
     },
     {
         "model": "mcpressureapi.servicetypeequipment",
         "pk": 2,
         "fields": {
-            "equipment_id": 1,
-            "service_type_id": 1
+            "service_type": 2,
+            "equipment": 1
+        }
+    },
+    {
+        "model": "mcpressureapi.servicetypeequipment",
+        "pk": 3,
+        "fields": {
+            "service_type": 2,
+            "equipment": 2
+        }
+    },
+    {
+        "model": "mcpressureapi.servicetypeequipment",
+        "pk": 4,
+        "fields": {
+            "service_type": 3,
+            "equipment": 1
+        }
+    },
+    {
+        "model": "mcpressureapi.servicetypeequipment",
+        "pk": 5,
+        "fields": {
+            "service_type": 3,
+            "equipment": 3
         }
     }
 ]
