@@ -116,7 +116,6 @@ class AppointmentView(ViewSet):
             if is_fields_missing:
                     return Response({"message": missing_fields}, status = status.HTTP_400_BAD_REQUEST)
 
-            employees = request.data.get("employee", None)
 
             customer = Customer.objects.get(user=request.auth.user)
             service_type = ServiceType.objects.get(pk=request.data["service_type"])
@@ -128,11 +127,13 @@ class AppointmentView(ViewSet):
                 service_type=service_type,
                 request_date=request.data["request_date"],
                 request_details=request.data["request_details"],
+                image=request.data["image"],
                 scheduled = False,
                 progress = progress,
                 consultation= False,
                 completed=False,
             )
+
 
     
         serializer = AppointmentsSerializer(appointment)
