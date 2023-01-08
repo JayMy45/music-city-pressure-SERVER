@@ -22,5 +22,3 @@ class Appointments(models.Model):
     def unconfirmed(self, value):
         self.__confirmed = value
     
-    # on the fence about locations...
-    # location = models.ForeignKey("Location", on_delete=models.CASCADE)
