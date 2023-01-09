@@ -173,6 +173,8 @@ class AppointmentView(ViewSet):
 
             
             employees = request.data.get("employee", None)
+            request_details = request.data.get("request_details", None)
+            image = request.data.get("image", None)
 
             # if staff is updating appointment
             service_type = ServiceType.objects.get(pk=request.data["service_type"])
@@ -184,6 +186,14 @@ class AppointmentView(ViewSet):
             appointment.confirm = request.data["confirm"]
             appointment.consultation = request.data["consultation"]
             appointment.completed = request.data["completed"]
+
+            if request_details is not None:
+                appointment.request_details = request.data["request_details"]
+
+            if image is not None:
+                appointment.image = request.data["image"]
+
+
             
             appointment.save()
 
