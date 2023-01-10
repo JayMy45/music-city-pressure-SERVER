@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from rest_framework import serializers, status
 from rest_framework.decorators import action
 from django.contrib.auth.models import User
-from mcpressureapi.models import Employee, Specialty
+from mcpressureapi.models import Employee, Specialty, EmployeeServiceTypeSpecialty
 
 class EmployeeView(ViewSet):
     """Get request to get all Employees
@@ -61,6 +61,9 @@ class EmployeeView(ViewSet):
         Return:
             Response - No response body status just (201)
         """
+
+        specialties = request.data.get("specialty", None)
+
         employee = Employee.objects.get(pk=pk)
         employee.bio = request.data['bio']
         employee.address = request.data['address']
@@ -69,6 +72,15 @@ class EmployeeView(ViewSet):
         employee.image = request.data['image']
 
         employee.save()
+
+        if specialties is not None:
+                for specialty in specialties:
+                    specialty_to_assign = Specialty.objects.get(pk=specialty)
+                    employee_specialty = EmployeeServiceTypeSpecialty()
+                    employee_specialty.specialty = specialty_to_assign
+                    employee_specialty.employee = employee
+                    employee_specialty.save()
+
         return Response(None, status=status.HTTP_204_NO_CONTENT)
 
     def destroy(self, request, pk):

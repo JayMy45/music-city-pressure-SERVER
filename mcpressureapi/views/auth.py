@@ -6,7 +6,7 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework import status
-from mcpressureapi.models import Customer, Employee
+from mcpressureapi.models import Customer, Employee, Specialty, EmployeeServiceTypeSpecialty
 
 @api_view(['POST'])
 @permission_classes([AllowAny])
@@ -122,19 +122,30 @@ def register_user(request):
                 new_user.is_superuser = False
             new_user.save()
 
+            specialties = request.data.get("specialty", None)
+
             account = Employee.objects.create(
-                specialty=request.data['specialty'],
                 address=request.data['address'],
                 phone_number=request.data['phone_number'],
                 salary=request.data['salary'],
+
                 user=new_user
             )
+
+            if specialties is not None:
+                for specialty in specialties:
+                    specialty_to_assign = Specialty.objects.get(pk=specialty)
+                    employee_specialty = EmployeeServiceTypeSpecialty()
+                    employee_specialty.specialty = specialty_to_assign
+                    employee_specialty.employee = new_user
+                    employee_specialty.save()
+
 
 
         # Use the REST Framework's token generator on the new user account
         token = Token.objects.create(user=account.user)
         # Return the token to the client
-        data = { 'token': token.key, 'staff': new_user.is_staff }
+        data = { 'token': token.key, 'staff': new_user.is_staff, 'supervisor': new_user.is_superuser }
         return Response(data)
 
     return Response({'message': 'You must provide email, password, first_name, last_name and account_type'}, status=status.HTTP_400_BAD_REQUEST)
