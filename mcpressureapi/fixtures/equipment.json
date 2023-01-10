@@ -47,5 +47,12 @@
         "fields": {
             "label": "Moss Reducer"
         }
+    },
+    {
+        "model": "mcpressureapi.equipment",
+        "pk": 8,
+        "fields": {
+            "label": "Mosmatic High Pressure FL-CR 750"
+        }
     }
 ]
