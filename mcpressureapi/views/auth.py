@@ -127,6 +127,7 @@ def register_user(request):
             account = Employee.objects.create(
                 address=request.data['address'],
                 phone_number=request.data['phone_number'],
+                bio=request.data['bio'],
                 salary=request.data['salary'],
 
                 user=new_user
