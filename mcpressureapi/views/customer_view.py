@@ -16,9 +16,12 @@ class CustomerView(ViewSet):
     @action(methods=['get'], detail=False)
     def current_customer(self,request):
         """Get current logged in Customer"""
-        # user = User.objects.get(pk=request.auth.user_id)
-        # if user.is_staff:
-        customer = Customer.objects.get(user=request.auth.user)
+        try:
+            customer = Customer.objects.get(user=request.auth.user)
+        except:
+            user = User.objects.get(pk=request.auth.user_id)
+            if user.is_staff:
+                pass
 
         serializer = CustomerSerializer(customer)
         return Response(serializer.data, status=status.HTTP_200_OK)
