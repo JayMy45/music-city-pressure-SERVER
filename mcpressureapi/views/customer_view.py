@@ -62,7 +62,7 @@ class CustomerView(ViewSet):
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model =  User
-        fields = ('id','is_staff', )
+        fields = ('id','is_staff', 'email',)
 
 
 class CustomerSerializer(serializers.ModelSerializer):
