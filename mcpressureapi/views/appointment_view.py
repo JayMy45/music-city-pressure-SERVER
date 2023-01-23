@@ -10,6 +10,21 @@ from mcpressureapi.models import Appointments, Customer, Employee, ServiceType, 
 class AppointmentView(ViewSet):
     """Music City Pressure API Appointment view"""
 
+    #Leave Method
+# action decorator accepts delete request (methods=['delete]) and a detail route (detail=True)
+    @action(methods=['delete'], detail=True)
+    def unassign(self, request, pk):
+        """DELETE request for a user to leave an event"""
+        # gets Employee (technician) and Appointment objects from request
+        employee_pk = request.data.get("employee_pk")
+        print(type(employee_pk))
+        technician = Employee.objects.get(pk=employee_pk)
+        appointment = Appointments.objects.get(pk=pk)
+       #removes employee from join table
+        EmployeeAppointment.objects.filter(employee=technician, appointment=appointment).delete()
+        # returns 200 status and message 
+        return Response({'message':'Employee has left the appointment'}, status=status.HTTP_200_OK)
+    
     def list(self, request):
         """Handle GET requests to get all Appointments
 
