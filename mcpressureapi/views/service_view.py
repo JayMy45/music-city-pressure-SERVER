@@ -109,6 +109,21 @@ class ServiceTypeView(ViewSet):
             service.save()
 
             for tool in tools:
+                # Get the existing equipment for the service
+                existing_equipment = ServiceTypeEquipment.objects.filter(service_type=service)
+
+                # Get the existing equipment IDs
+                existing_equipment_ids = set(existing_equipment.values_list('equipment', flat=True))
+
+                # Get the new equipment IDs
+                new_equipment_ids = set(tools)
+
+                # Get the equipment IDs that need to be removed
+                equipment_to_remove = existing_equipment_ids - new_equipment_ids
+
+                # Remove the equipment
+                ServiceTypeEquipment.objects.filter(service_type=service, equipment__in=equipment_to_remove).delete()
+
                 tools_to_assign = Equipment.objects.get(pk=tool)
                 service_tools = ServiceTypeEquipment()
                 service_tools.equipment = tools_to_assign
