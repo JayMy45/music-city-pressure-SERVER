@@ -10,44 +10,92 @@ from mcpressureapi.models import Appointments, Customer, Employee, ServiceType, 
 class AppointmentView(ViewSet):
     """Music City Pressure API Appointment view"""
 
-#? Unassign Employee Method
+#* Unassign Employee Method
 # action decorator accepts delete request (methods=['delete]) and a detail route (detail=True)
     @action(methods=['delete'], detail=True)
     def unassign(self, request, pk):
-        """DELETE request for a user to unassign an employee from an event"""
+        """DELETE request for a Admin to unassign an Employee from an appointment"""
+        #retrieves employee primary keys to unassign from request data
         employee_pks = request.data.get("employee_pks")
+        #retrieves appointment by primary key
         appointment = Appointments.objects.get(pk=pk)
         for employee_pk in employee_pks:
+            #retrieves employee by primary key
             technician = Employee.objects.filter(pk=employee_pk).first()
+            # check if employee exists or not
             if technician is None:
+                # returns a 404 status with a message if employee does not exist
                 return Response({'message': f'Employee {employee_pk} does not exist'}, status=status.HTTP_404_NOT_FOUND)
             #removes employee from join table
             EmployeeAppointment.objects.filter(employee=technician, appointment=appointment).delete()
         # returns 200 status and message 
         return Response({'message':'Employees has left the appointment'}, status=status.HTTP_200_OK)
 
-    
+    # def list(self, request):
+    #     """Handle GET requests to get all Appointments
+
+    #     Returns:
+    #         Response -- JSON serialized list of appointments
+    #     """
+
+    #     # user = User.objects.get(pk=request.auth.user_id)
+    #     try: 
+    #         log_user = Customer.objects.get(user=request.auth.user)
+
+    #         if log_user:
+    #             appointments = Appointments.objects.filter(customer_id = log_user)
+
+    #     except:
+    #         # user.is_staff
+    #         # get all appointments
+    #         appointments = Appointments.objects.all()
+            
+    #     serialized = AppointmentsSerializer(appointments, many=True)
+    #     return Response(serialized.data, status=status.HTTP_200_OK)
+
     def list(self, request):
         """Handle GET requests to get all Appointments
 
         Returns:
             Response -- JSON serialized list of appointments
         """
+        user = User.objects.get(pk=request.auth.user_id)
 
-        # user = User.objects.get(pk=request.auth.user_id)
-        try: 
-            log_user = Customer.objects.get(user=request.auth.user)
+        # check if user is a staff member
+        if user.is_staff:
+            # check if employee_id is provided in the request
+            employee_id = request.query_params.get("employee_id")
+            if employee_id:
+                try:
+                    # Retrieve employee by primary key/id
+                    employee = Employee.objects.get(pk=employee_id)
+                except Employee.DoesNotExist:
+                    return Response({'message': 'Employee not found'}, status=status.HTTP_404_NOT_FOUND)
 
-            if log_user:
-                appointments = Appointments.objects.filter(customer_id = log_user)
+                try:
+                    # Retrieve appointments filtered by employee
+                    appointments = Appointments.objects.filter(employee=employee)
+                except Appointments.DoesNotExist:
+                    return Response({'message': 'Appointments not found'}, status=status.HTTP_404_NOT_FOUND)
+            else:
+                # Retrieve all appointments
+                appointments = Appointments.objects.all()
+        else:
+            try:
+                # Retrieve customer associated with the current user
+                customer = Customer.objects.get(user=user)
+            except Customer.DoesNotExist:
+                return Response({'message': 'Customer not found'}, status=status.HTTP_404_NOT_FOUND)
 
-        except:
-            # user.is_staff
-            # get all appointments
-            appointments = Appointments.objects.all()
-            
-        serialized = AppointmentsSerializer(appointments, many=True)
-        return Response(serialized.data, status=status.HTTP_200_OK)
+            try:
+                # Retrieve appointments filtered by customer
+                appointments = Appointments.objects.filter(customer=customer)
+            except Appointments.DoesNotExist:
+                return Response({            'message': 'Appointments not found'}, status=status.HTTP_404_NOT_FOUND)
+
+        # Serialize appointments data
+        serializer = AppointmentsSerializer(appointments, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
     def retrieve(self, request, pk=None):
         """Handle GET requests for single Appointment
