@@ -31,28 +31,6 @@ class AppointmentView(ViewSet):
         # returns 200 status and message 
         return Response({'message':'Employees has left the appointment'}, status=status.HTTP_200_OK)
 
-    # def list(self, request):
-    #     """Handle GET requests to get all Appointments
-
-    #     Returns:
-    #         Response -- JSON serialized list of appointments
-    #     """
-
-    #     # user = User.objects.get(pk=request.auth.user_id)
-    #     try: 
-    #         log_user = Customer.objects.get(user=request.auth.user)
-
-    #         if log_user:
-    #             appointments = Appointments.objects.filter(customer_id = log_user)
-
-    #     except:
-    #         # user.is_staff
-    #         # get all appointments
-    #         appointments = Appointments.objects.all()
-            
-    #     serialized = AppointmentsSerializer(appointments, many=True)
-    #     return Response(serialized.data, status=status.HTTP_200_OK)
-
     def list(self, request):
         """Handle GET requests to get all Appointments
 
