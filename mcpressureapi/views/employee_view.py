@@ -117,7 +117,7 @@ class EmployeeView(ViewSet):
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model =  User
-        fields = ('id','is_staff', 'is_superuser', 'first_name', 'email', )
+        fields = ('id','is_staff', 'is_superuser', 'first_name', 'last_name', 'email', )
 
 class SpecialtySerializer(serializers.ModelSerializer):
     class Meta:
