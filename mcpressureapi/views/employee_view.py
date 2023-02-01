@@ -24,6 +24,29 @@ class EmployeeView(ViewSet):
         serializer = EmployeeSerializer(employee)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
+#* Remove specialty Employee Method
+# action decorator accepts delete request (methods=['delete]) and a detail route (detail=True)
+    @action(methods=['delete'], detail=True)
+    def remove_specialty(self, request, pk):
+        """DELETE request for a Admin to remove_specialty an from Employee details"""
+        #retrieves specialty primary keys to remove_specialty from request data
+        specialty_pks = request.data.get("specialty_pks")
+        #retrieves employee by primary key
+        employee = Employee.objects.get(pk=pk)
+        for specialty_pk in specialty_pks:
+            #retrieves specialty by primary key
+            skill = Specialty.objects.filter(pk=specialty_pk).first()
+            # check if specialty exists or not
+            if skill is None:
+                # returns a 404 status with a message if specialty does not exist
+                return Response({'message': f'Specialty {specialty_pk} does not exist'}, status=status.HTTP_404_NOT_FOUND)
+            #removes specialty from join table
+            EmployeeServiceTypeSpecialty.objects.filter(specialty=skill, employee=employee).delete()
+        # returns 200 status and message 
+        return Response({'message':'Specialty has been removed from Employee'}, status=status.HTTP_200_OK)
+
+
+
     def list(self, request):
         """Get request to get all Employees
 
