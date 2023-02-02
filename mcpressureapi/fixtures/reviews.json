@@ -3,8 +3,8 @@
         "model": "mcpressureapi.reviews",
         "pk": 1,
         "fields": {
-            "customer_id": 1,
-            "service_call_id": 1,
+            "customer": 1,
+            "service_call": 1,
             "content": "Great job on the patio. Got everything perfect before my sons part"
         }
     },
@@ -12,8 +12,8 @@
         "model": "mcpressureapi.reviews",
         "pk": 2,
         "fields": {
-            "customer_id": 1,
-            "service_call_id": 1,
+            "customer": 1,
+            "service_call": 1,
             "content": "Great job on the patio.  Got everything perfect before my sons part"
         }
     },
@@ -21,8 +21,8 @@
         "model": "mcpressureapi.reviews",
         "pk": 3,
         "fields": {
-            "customer_id": 1,
-            "service_call_id": 1,
+            "customer": 1,
+            "service_call": 1,
             "content": "Great job on the patio.  Got everything perfect before my sons part"
         }
     },
@@ -30,8 +30,8 @@
         "model": "mcpressureapi.reviews",
         "pk": 4,
         "fields": {
-            "customer_id": 1,
-            "service_call_id": 1,
+            "customer": 1,
+            "service_call": 1,
             "content": "Great job on the patio.  Got everything perfect before my sons part"
         }
     }

@@ -1,26 +1,34 @@
 [
     {
         "model": "mcpressureapi.employeeappointment",
-        "pk": 1,
+        "pk": 222,
         "fields": {
-            "employee_id": 1,
+            "employee": 1,
+            "appointment": 15
+        }
+    },
+    {
+        "model": "mcpressureapi.employeeappointment",
+        "pk": 223,
+        "fields": {
+            "employee": 1,
             "appointment": 3
         }
     },
     {
         "model": "mcpressureapi.employeeappointment",
-        "pk": 2,
+        "pk": 230,
         "fields": {
-            "employee_id": 2,
-            "appointment": 3
-        }
-    },
-    {
-        "model": "mcpressureapi.employeeappointment",
-        "pk": 3,
-        "fields": {
-            "employee_id": 1,
+            "employee": 2,
             "appointment": 2
+        }
+    },
+    {
+        "model": "mcpressureapi.employeeappointment",
+        "pk": 231,
+        "fields": {
+            "employee": 1,
+            "appointment": 6
         }
     }
 ]

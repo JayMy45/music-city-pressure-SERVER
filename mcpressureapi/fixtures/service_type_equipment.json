@@ -4,7 +4,7 @@
         "pk": 1,
         "fields": {
             "service_type": 1,
-            "equipment_id": 1
+            "equipment": 1
         }
     },
     {
@@ -37,6 +37,230 @@
         "fields": {
             "service_type": 3,
             "equipment": 3
+        }
+    },
+    {
+        "model": "mcpressureapi.servicetypeequipment",
+        "pk": 6,
+        "fields": {
+            "service_type": 4,
+            "equipment": 1
+        }
+    },
+    {
+        "model": "mcpressureapi.servicetypeequipment",
+        "pk": 7,
+        "fields": {
+            "service_type": 3,
+            "equipment": 4
+        }
+    },
+    {
+        "model": "mcpressureapi.servicetypeequipment",
+        "pk": 8,
+        "fields": {
+            "service_type": 3,
+            "equipment": 7
+        }
+    },
+    {
+        "model": "mcpressureapi.servicetypeequipment",
+        "pk": 12,
+        "fields": {
+            "service_type": 1,
+            "equipment": 3
+        }
+    },
+    {
+        "model": "mcpressureapi.servicetypeequipment",
+        "pk": 13,
+        "fields": {
+            "service_type": 1,
+            "equipment": 4
+        }
+    },
+    {
+        "model": "mcpressureapi.servicetypeequipment",
+        "pk": 14,
+        "fields": {
+            "service_type": 1,
+            "equipment": 5
+        }
+    },
+    {
+        "model": "mcpressureapi.servicetypeequipment",
+        "pk": 23,
+        "fields": {
+            "service_type": 4,
+            "equipment": 1
+        }
+    },
+    {
+        "model": "mcpressureapi.servicetypeequipment",
+        "pk": 25,
+        "fields": {
+            "service_type": 4,
+            "equipment": 1
+        }
+    },
+    {
+        "model": "mcpressureapi.servicetypeequipment",
+        "pk": 26,
+        "fields": {
+            "service_type": 4,
+            "equipment": 1
+        }
+    },
+    {
+        "model": "mcpressureapi.servicetypeequipment",
+        "pk": 27,
+        "fields": {
+            "service_type": 4,
+            "equipment": 1
+        }
+    },
+    {
+        "model": "mcpressureapi.servicetypeequipment",
+        "pk": 28,
+        "fields": {
+            "service_type": 4,
+            "equipment": 1
+        }
+    },
+    {
+        "model": "mcpressureapi.servicetypeequipment",
+        "pk": 29,
+        "fields": {
+            "service_type": 4,
+            "equipment": 1
+        }
+    },
+    {
+        "model": "mcpressureapi.servicetypeequipment",
+        "pk": 30,
+        "fields": {
+            "service_type": 4,
+            "equipment": 1
+        }
+    },
+    {
+        "model": "mcpressureapi.servicetypeequipment",
+        "pk": 31,
+        "fields": {
+            "service_type": 4,
+            "equipment": 1
+        }
+    },
+    {
+        "model": "mcpressureapi.servicetypeequipment",
+        "pk": 32,
+        "fields": {
+            "service_type": 4,
+            "equipment": 1
+        }
+    },
+    {
+        "model": "mcpressureapi.servicetypeequipment",
+        "pk": 34,
+        "fields": {
+            "service_type": 4,
+            "equipment": 1
+        }
+    },
+    {
+        "model": "mcpressureapi.servicetypeequipment",
+        "pk": 35,
+        "fields": {
+            "service_type": 4,
+            "equipment": 1
+        }
+    },
+    {
+        "model": "mcpressureapi.servicetypeequipment",
+        "pk": 38,
+        "fields": {
+            "service_type": 4,
+            "equipment": 1
+        }
+    },
+    {
+        "model": "mcpressureapi.servicetypeequipment",
+        "pk": 40,
+        "fields": {
+            "service_type": 4,
+            "equipment": 1
+        }
+    },
+    {
+        "model": "mcpressureapi.servicetypeequipment",
+        "pk": 43,
+        "fields": {
+            "service_type": 4,
+            "equipment": 1
+        }
+    },
+    {
+        "model": "mcpressureapi.servicetypeequipment",
+        "pk": 44,
+        "fields": {
+            "service_type": 4,
+            "equipment": 1
+        }
+    },
+    {
+        "model": "mcpressureapi.servicetypeequipment",
+        "pk": 45,
+        "fields": {
+            "service_type": 4,
+            "equipment": 1
+        }
+    },
+    {
+        "model": "mcpressureapi.servicetypeequipment",
+        "pk": 47,
+        "fields": {
+            "service_type": 4,
+            "equipment": 1
+        }
+    },
+    {
+        "model": "mcpressureapi.servicetypeequipment",
+        "pk": 48,
+        "fields": {
+            "service_type": 4,
+            "equipment": 1
+        }
+    },
+    {
+        "model": "mcpressureapi.servicetypeequipment",
+        "pk": 50,
+        "fields": {
+            "service_type": 4,
+            "equipment": 1
+        }
+    },
+    {
+        "model": "mcpressureapi.servicetypeequipment",
+        "pk": 52,
+        "fields": {
+            "service_type": 4,
+            "equipment": 1
+        }
+    },
+    {
+        "model": "mcpressureapi.servicetypeequipment",
+        "pk": 53,
+        "fields": {
+            "service_type": 4,
+            "equipment": 1
+        }
+    },
+    {
+        "model": "mcpressureapi.servicetypeequipment",
+        "pk": 54,
+        "fields": {
+            "service_type": 4,
+            "equipment": 4
         }
     }
 ]
