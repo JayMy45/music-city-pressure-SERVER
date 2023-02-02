@@ -17,7 +17,47 @@
     },
     {
         "model": "mcpressureapi.employeeservicetypespecialty",
-        "pk": 3,
+        "pk": 4,
+        "fields": {
+            "employee": 2,
+            "specialty": 3
+        }
+    },
+    {
+        "model": "mcpressureapi.employeeservicetypespecialty",
+        "pk": 5,
+        "fields": {
+            "employee": 3,
+            "specialty": 4
+        }
+    },
+    {
+        "model": "mcpressureapi.employeeservicetypespecialty",
+        "pk": 6,
+        "fields": {
+            "employee": 3,
+            "specialty": 3
+        }
+    },
+    {
+        "model": "mcpressureapi.employeeservicetypespecialty",
+        "pk": 7,
+        "fields": {
+            "employee": 3,
+            "specialty": 2
+        }
+    },
+    {
+        "model": "mcpressureapi.employeeservicetypespecialty",
+        "pk": 11,
+        "fields": {
+            "employee": 2,
+            "specialty": 2
+        }
+    },
+    {
+        "model": "mcpressureapi.employeeservicetypespecialty",
+        "pk": 13,
         "fields": {
             "employee": 2,
             "specialty": 1
@@ -25,10 +65,34 @@
     },
     {
         "model": "mcpressureapi.employeeservicetypespecialty",
-        "pk": 4,
+        "pk": 14,
         "fields": {
-            "employee": 2,
+            "employee": 9,
+            "specialty": 1
+        }
+    },
+    {
+        "model": "mcpressureapi.employeeservicetypespecialty",
+        "pk": 15,
+        "fields": {
+            "employee": 9,
+            "specialty": 2
+        }
+    },
+    {
+        "model": "mcpressureapi.employeeservicetypespecialty",
+        "pk": 16,
+        "fields": {
+            "employee": 9,
             "specialty": 3
+        }
+    },
+    {
+        "model": "mcpressureapi.employeeservicetypespecialty",
+        "pk": 17,
+        "fields": {
+            "employee": 9,
+            "specialty": 4
         }
     }
 ]

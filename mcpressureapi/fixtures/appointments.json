@@ -3,59 +3,119 @@
         "model": "mcpressureapi.appointments",
         "pk": 1,
         "fields": {
-            "employee": [],
             "customer": 1,
             "service_type": 1,
-            "progress": 1,
+            "progress": 8,
             "request_details": "Need this roof done like yesterday",
             "image": "https://i.etsystatic.com/36351647/r/il/b65185/3997255842/il_794xN.3997255842_li22.jpg",
-            "request_date": "2023-03-23",
+            "request_date": "2023-02-17",
             "date_completed": "2022-11-07",
-            "scheduled": false,
+            "scheduled": true,
             "consultation": false,
             "completed": false,
-            "confirm": false
+            "confirm": true
         }
     },
     {
         "model": "mcpressureapi.appointments",
         "pk": 2,
         "fields": {
-            "employee": [
-                1
-            ],
             "customer": 1,
             "service_type": 1,
-            "progress": 1,
+            "progress": 4,
             "request_details": "Need this roof done like yesterday",
             "image": "https://media.vrbo.com/lodging/28000000/27120000/27118200/27118106/165dd635.c10.jpg",
-            "request_date": "2022-10-23",
+            "request_date": "2023-02-22",
             "date_completed": "2022-11-07",
-            "scheduled": false,
+            "scheduled": true,
             "consultation": true,
             "completed": false,
-            "confirm": false
+            "confirm": true
         }
     },
     {
         "model": "mcpressureapi.appointments",
         "pk": 3,
         "fields": {
-            "employee": [
-                1,
-                2
-            ],
             "customer": 1,
             "service_type": 1,
             "progress": 1,
             "request_details": "Need this roof done like yesterday",
             "image": "https://cdn.shopify.com/s/files/1/0280/5429/0496/products/Exterior-Dusk-1.jpg?v=1658245469",
-            "request_date": "2022-10-23",
+            "request_date": "2023-03-10",
             "date_completed": "2022-11-07",
+            "scheduled": true,
+            "consultation": false,
+            "completed": false,
+            "confirm": true
+        }
+    },
+    {
+        "model": "mcpressureapi.appointments",
+        "pk": 5,
+        "fields": {
+            "customer": 2,
+            "service_type": 1,
+            "progress": 3,
+            "request_details": "Wood panels need to get cleaned before my daughters wedding out here.  Can't wait to hear from you guys.",
+            "image": "http://res.cloudinary.com/dp04hh5pz/image/upload/v1673331582/xavgakzxglu90uvuuilq.jpg",
+            "request_date": "2023-02-03",
+            "date_completed": null,
+            "scheduled": true,
+            "consultation": false,
+            "completed": false,
+            "confirm": true
+        }
+    },
+    {
+        "model": "mcpressureapi.appointments",
+        "pk": 6,
+        "fields": {
+            "customer": 3,
+            "service_type": 2,
+            "progress": 1,
+            "request_details": "Need boulder and house washed off.  See picture for details",
+            "image": "http://res.cloudinary.com/dp04hh5pz/image/upload/v1673331962/wyadyfwtlo5jftmevlgj.jpg",
+            "request_date": "2023-02-11",
+            "date_completed": null,
+            "scheduled": true,
+            "consultation": false,
+            "completed": false,
+            "confirm": true
+        }
+    },
+    {
+        "model": "mcpressureapi.appointments",
+        "pk": 15,
+        "fields": {
+            "customer": 5,
+            "service_type": 4,
+            "progress": 1,
+            "request_details": "Need marble concrete porch washed.",
+            "image": "http://res.cloudinary.com/dp04hh5pz/image/upload/v1673631591/bdtfkinttml8vgvhwqlb.jpg",
+            "request_date": "2023-02-04",
+            "date_completed": null,
             "scheduled": false,
             "consultation": false,
             "completed": false,
             "confirm": false
+        }
+    },
+    {
+        "model": "mcpressureapi.appointments",
+        "pk": 16,
+        "fields": {
+            "customer": 4,
+            "service_type": 1,
+            "progress": 1,
+            "request_details": "Going out of town and will be AirBnB the spot for a while.",
+            "image": "http://res.cloudinary.com/dp04hh5pz/image/upload/v1673631714/zxreggyl4n0pbtq5npni.avif",
+            "request_date": "2023-02-11",
+            "date_completed": null,
+            "scheduled": true,
+            "consultation": false,
+            "completed": false,
+            "confirm": true
         }
     }
 ]

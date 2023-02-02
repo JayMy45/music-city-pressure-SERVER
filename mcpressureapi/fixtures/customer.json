@@ -4,8 +4,89 @@
         "pk": 1,
         "fields": {
             "user": 1,
-            "phone_number": "8034567890",
+            "phone_number": "(803) 456-7890",
             "address": "1544 RoundWay Rd."
+        }
+    },
+    {
+        "model": "mcpressureapi.customer",
+        "pk": 2,
+        "fields": {
+            "user": 4,
+            "phone_number": "(615) 456-7788",
+            "address": "222 Brompton Rd."
+        }
+    },
+    {
+        "model": "mcpressureapi.customer",
+        "pk": 3,
+        "fields": {
+            "user": 5,
+            "phone_number": "(615) 353-8043",
+            "address": "320 Congaree Ch. Rd."
+        }
+    },
+    {
+        "model": "mcpressureapi.customer",
+        "pk": 4,
+        "fields": {
+            "user": 6,
+            "phone_number": "615333722",
+            "address": "245 Circles Way"
+        }
+    },
+    {
+        "model": "mcpressureapi.customer",
+        "pk": 5,
+        "fields": {
+            "user": 7,
+            "phone_number": "(404) 893-0123",
+            "address": "221 Merc edeS"
+        }
+    },
+    {
+        "model": "mcpressureapi.customer",
+        "pk": 6,
+        "fields": {
+            "user": 9,
+            "phone_number": "(803) 555-2463",
+            "address": "123 Fugee La"
+        }
+    },
+    {
+        "model": "mcpressureapi.customer",
+        "pk": 7,
+        "fields": {
+            "user": 12,
+            "phone_number": "77783948",
+            "address": "123 coakjdsfl"
+        }
+    },
+    {
+        "model": "mcpressureapi.customer",
+        "pk": 8,
+        "fields": {
+            "user": 14,
+            "phone_number": "(803) 757-6969",
+            "address": "123 star buck st."
+        }
+    },
+    {
+        "model": "mcpressureapi.customer",
+        "pk": 9,
+        "fields": {
+            "user": 16,
+            "phone_number": "(803) 757-6868",
+            "address": "345 bplaksdjf"
+        }
+    },
+    {
+        "model": "mcpressureapi.customer",
+        "pk": 10,
+        "fields": {
+            "user": 18,
+            "phone_number": "(615) 723-7890",
+            "address": "123 Moxy Ave."
         }
     }
 ]
