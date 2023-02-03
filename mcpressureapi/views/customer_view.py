@@ -35,7 +35,8 @@ class CustomerView(ViewSet):
         """
         user = User.objects.get(pk=request.auth.user_id)
         if user.is_staff:
-            customer = Customer.objects.all()
+            customer = Customer.objects.all().order_by('user__first_name', 'user__last_name')
+
             
         else:
             log_customer =  Customer.objects.get(user=request.auth.user)
@@ -67,6 +68,7 @@ class UserSerializer(serializers.ModelSerializer):
 
 class CustomerSerializer(serializers.ModelSerializer):
     user = UserSerializer(many=False)
+    full_name = serializers.ReadOnlyField()
     class Meta:
         model =  Customer
         fields = ('id','full_name', 'address', 'phone_number', 'user', )

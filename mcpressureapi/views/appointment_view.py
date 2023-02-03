@@ -43,6 +43,7 @@ class AppointmentView(ViewSet):
         if user.is_staff:
             # check if employee_id is provided in the request
             employee_id = request.query_params.get("employee_id")
+            customer_id = request.query_params.get("customer_id")
             if employee_id:
                 try:
                     # Retrieve employee by primary key/id
@@ -55,6 +56,20 @@ class AppointmentView(ViewSet):
                     appointments = Appointments.objects.filter(employee=employee)
                 except Appointments.DoesNotExist:
                     return Response({'message': 'Appointments not found'}, status=status.HTTP_404_NOT_FOUND)
+
+            elif customer_id:
+                try:
+                    # Retrieve customer by primary key/id
+                    customer = Customer.objects.get(pk=customer_id)
+                except Customer.DoesNotExist:
+                    return Response({'message': 'Customer not found'}, status=status.HTTP_404_NOT_FOUND)
+
+                try:
+                    # Retrieve appointments filtered by customer
+                    appointments = Appointments.objects.filter(customer=customer)
+                except Appointments.DoesNotExist:
+                    return Response({'message': 'Appointments not found'}, status=status.HTTP_404_NOT_FOUND)
+                    
             else:
                 # Retrieve all appointments
                 appointments = Appointments.objects.all()
