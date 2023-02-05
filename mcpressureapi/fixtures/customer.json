@@ -5,7 +5,8 @@
         "fields": {
             "user": 1,
             "phone_number": "(803) 456-7890",
-            "address": "1544 RoundWay Rd."
+            "address": "1544 RoundWay Rd.",
+            "image": "https://res.cloudinary.com/dp04hh5pz/image/upload/v1675580018/fortnite-malik-variant1-1040x1068-6fd62bb3c105_c9dnjz.png"
         }
     },
     {
@@ -14,7 +15,8 @@
         "fields": {
             "user": 4,
             "phone_number": "(615) 456-7788",
-            "address": "222 Brompton Rd."
+            "address": "222 Brompton Rd.",
+            "image": "https://res.cloudinary.com/dp04hh5pz/image/upload/v1675580196/images_miitlk.jpg"
         }
     },
     {
@@ -23,7 +25,8 @@
         "fields": {
             "user": 5,
             "phone_number": "(615) 353-8043",
-            "address": "320 Congaree Ch. Rd."
+            "address": "320 Congaree Ch. Rd.",
+            "image": "https://res.cloudinary.com/dp04hh5pz/image/upload/v1675580277/gz4welviq65j6rr9kt8g.jpg"
         }
     },
     {
@@ -32,7 +35,8 @@
         "fields": {
             "user": 6,
             "phone_number": "615333722",
-            "address": "245 Circles Way"
+            "address": "245 Circles Way",
+            "image": "https://res.cloudinary.com/dp04hh5pz/image/upload/v1675580370/ulyfrytvvycasejifqlj.jpg"
         }
     },
     {
@@ -41,7 +45,8 @@
         "fields": {
             "user": 7,
             "phone_number": "(404) 893-0123",
-            "address": "221 Merc EdeS"
+            "address": "221 Merc EdeS",
+            "image": "https://res.cloudinary.com/dp04hh5pz/image/upload/v1675580448/images_t6i68j.jpg"
         }
     },
     {
@@ -50,7 +55,8 @@
         "fields": {
             "user": 9,
             "phone_number": "(803) 555-2463",
-            "address": "123 Fugee La"
+            "address": "123 Fugee La",
+            "image": "https://res.cloudinary.com/dp04hh5pz/image/upload/v1675580526/images_gxxcc1.png"
         }
     },
     {
@@ -59,7 +65,8 @@
         "fields": {
             "user": 12,
             "phone_number": "77783948",
-            "address": "123 Tangent Cir."
+            "address": "123 Tangent Cir.",
+            "image": "https://res.cloudinary.com/dp04hh5pz/image/upload/v1675580604/vtlnu6fupvegjy25ssaq.jpg"
         }
     },
     {
@@ -68,7 +75,8 @@
         "fields": {
             "user": 14,
             "phone_number": "(803) 757-6969",
-            "address": "213 Star Buck St."
+            "address": "213 Star Buck St.",
+            "image": "https://res.cloudinary.com/dp04hh5pz/image/upload/v1675580677/w6zv6hcgq8ai6pm6c2f7.jpg"
         }
     },
     {
@@ -77,7 +85,8 @@
         "fields": {
             "user": 16,
             "phone_number": "(803) 757-6868",
-            "address": "345 P.R. Weber Rd."
+            "address": "345 P.R. Weber Rd.",
+            "image": "https://res.cloudinary.com/dp04hh5pz/image/upload/v1675580839/images_arlkio.jpg"
         }
     },
     {
@@ -86,7 +95,8 @@
         "fields": {
             "user": 18,
             "phone_number": "(615) 723-7890",
-            "address": "123 Moxy Ave."
+            "address": "123 Moxy Ave.",
+            "image": "https://res.cloudinary.com/dp04hh5pz/image/upload/v1675581016/gw92vls9dafmazs7xwpj.jpg"
         }
     }
 ]
