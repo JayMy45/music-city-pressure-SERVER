@@ -5,6 +5,7 @@
         "fields": {
             "user": 1,
             "phone_number": "(803) 456-7890",
+            "bio": "My name is Fort Nyght and I was born and raised in Nashville, Tennessee. I'm a big fan of video games, especially Fortnite. It's a great way for me to unwind, improve my skills, and connect with friends. I spend a lot of my free time playing and I'm always looking for ways to get better. Representing Nashville in the gaming community is important to me and I hope to make a name for myself in the competitive scene.",
             "address": "1544 RoundWay Rd.",
             "image": "https://res.cloudinary.com/dp04hh5pz/image/upload/v1675580018/fortnite-malik-variant1-1040x1068-6fd62bb3c105_c9dnjz.png"
         }
@@ -15,6 +16,7 @@
         "fields": {
             "user": 4,
             "phone_number": "(615) 456-7788",
+            "bio": "My name is Samantha, but everyone calls me Sam. I live in the greater Nashville area and work in the tech community. In my free time, I love to go hiking and explore the beautiful outdoors. It's a great way for me to clear my mind and stay active. Hiking is a passion of mine and I feel so lucky to live in an area with so many great trails.",
             "address": "222 Brompton Rd.",
             "image": "https://res.cloudinary.com/dp04hh5pz/image/upload/v1675580196/images_miitlk.jpg"
         }
@@ -25,6 +27,7 @@
         "fields": {
             "user": 5,
             "phone_number": "(615) 353-8043",
+            "bio": "Nothing to say but hi, Bye",
             "address": "320 Congaree Ch. Rd.",
             "image": "https://res.cloudinary.com/dp04hh5pz/image/upload/v1675580277/gz4welviq65j6rr9kt8g.jpg"
         }
@@ -34,7 +37,8 @@
         "pk": 4,
         "fields": {
             "user": 6,
-            "phone_number": "615333722",
+            "phone_number": "(615) 333-7220",
+            "bio": "I am Brooklyn Grey, a proud Airbnb owner from Italy. I recently moved to Nashville to expand my business. The move has been a culture shock, but I am loving every minute of it. My Airbnb properties are keeping me busy, but I am also making time to explore the city. I am excited to bring a touch of Italian charm to my Airbnb properties and provide a welcoming home for my guests.",
             "address": "245 Circles Way",
             "image": "https://res.cloudinary.com/dp04hh5pz/image/upload/v1675580370/ulyfrytvvycasejifqlj.jpg"
         }
@@ -45,6 +49,7 @@
         "fields": {
             "user": 7,
             "phone_number": "(404) 893-0123",
+            "bio": "No need. Just need the service.  Downloaded the app to keep track of the progress. Nice feature!",
             "address": "221 Merc EdeS",
             "image": "https://res.cloudinary.com/dp04hh5pz/image/upload/v1675580448/images_t6i68j.jpg"
         }
@@ -55,6 +60,7 @@
         "fields": {
             "user": 9,
             "phone_number": "(803) 555-2463",
+            "bio": "",
             "address": "123 Fugee La",
             "image": "https://res.cloudinary.com/dp04hh5pz/image/upload/v1675580526/images_gxxcc1.png"
         }
@@ -64,7 +70,8 @@
         "pk": 7,
         "fields": {
             "user": 12,
-            "phone_number": "77783948",
+            "phone_number": "(777) 839-4800",
+            "bio": "I am Jill Scott and I love singing and performing spoken word. It is a true passion of mine and brings me so much joy.",
             "address": "123 Tangent Cir.",
             "image": "https://res.cloudinary.com/dp04hh5pz/image/upload/v1675580604/vtlnu6fupvegjy25ssaq.jpg"
         }
@@ -75,6 +82,7 @@
         "fields": {
             "user": 14,
             "phone_number": "(803) 757-6969",
+            "bio": "As a general manager, I am grateful for the presence of Starbucks in our community. Their delicious coffee and commitment to responsible sourcing make them a standout in the industry. The southern hospitality that each barista brings to their interactions with customers is a testament to the company's values and is truly appreciated. I am honored to work with Starbucks and am looking forward to our continued partnership.",
             "address": "213 Star Buck St.",
             "image": "https://res.cloudinary.com/dp04hh5pz/image/upload/v1675580677/w6zv6hcgq8ai6pm6c2f7.jpg"
         }
@@ -85,6 +93,7 @@
         "fields": {
             "user": 16,
             "phone_number": "(803) 757-6868",
+            "bio": "As a manager from Brooklyn, New York, I am impressed with the level of service and selection offered by Target in Nashville. The store provides a wide range of products, from groceries to home goods, at affordable prices. The staff is friendly and always willing to go above and beyond to make customers' shopping experiences as pleasant as possible.",
             "address": "345 P.R. Weber Rd.",
             "image": "https://res.cloudinary.com/dp04hh5pz/image/upload/v1675580839/images_arlkio.jpg"
         }
@@ -95,6 +104,7 @@
         "fields": {
             "user": 18,
             "phone_number": "(615) 723-7890",
+            "bio": "I am C-3PO, a protocol droid from the Star Wars universe. I have had the honor of serving Jedi Knight Luke Skywalker during some of the most pivotal moments in the Galactic Civil War. My expertise in languages and protocols has proven useful in resolving conflicts and facilitating communication, making me a valuable asset to the Rebel Alliance. Whether I'm translating for the leaders of the Rebellion or offering advice to Luke, I take pride in using my abilities to make a positive impact in the galaxy.",
             "address": "123 Moxy Ave.",
             "image": "https://res.cloudinary.com/dp04hh5pz/image/upload/v1675581016/gw92vls9dafmazs7xwpj.jpg"
         }

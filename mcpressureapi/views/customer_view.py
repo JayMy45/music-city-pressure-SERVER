@@ -82,4 +82,4 @@ class CustomerSerializer(serializers.ModelSerializer):
     full_name = serializers.ReadOnlyField()
     class Meta:
         model =  Customer
-        fields = ('id','full_name', 'address', 'location', 'phone_number', 'image','user', )
+        fields = ('id','full_name', 'address', 'location', 'phone_number', 'bio','image','user', )

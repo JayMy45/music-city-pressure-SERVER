@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 class Customer(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     phone_number = PhoneField(blank=True, help_text='Contact phone number')
+    bio = models.CharField(max_length=500)    
     address = models.CharField(max_length=200)    
     location = models.ManyToManyField('Location', blank=True, through='CustomerLocation')
     image = models.CharField(max_length=500)
