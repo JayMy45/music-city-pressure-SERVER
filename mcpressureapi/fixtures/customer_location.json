@@ -9,42 +9,90 @@
     },
     {
         "model": "mcpressureapi.customerlocation",
-        "pk": 1,
+        "pk": 2,
         "fields": {
-            "customer": 1,
-            "location": 1
+            "customer": 2,
+            "location": 2
         }
     },
     {
         "model": "mcpressureapi.customerlocation",
-        "pk": 1,
+        "pk": 3,
         "fields": {
-            "customer": 1,
-            "location": 1
+            "customer": 3,
+            "location": 3
         }
     },
     {
         "model": "mcpressureapi.customerlocation",
-        "pk": 1,
+        "pk": 4,
         "fields": {
-            "customer": 1,
-            "location": 1
+            "customer": 4,
+            "location": 4
         }
     },
     {
         "model": "mcpressureapi.customerlocation",
-        "pk": 1,
+        "pk": 5,
         "fields": {
-            "customer": 1,
-            "location": 1
+            "customer": 5,
+            "location": 5
         }
     },
     {
         "model": "mcpressureapi.customerlocation",
-        "pk": 1,
+        "pk": 6,
+        "fields": {
+            "customer": 6,
+            "location": 6
+        }
+    },
+    {
+        "model": "mcpressureapi.customerlocation",
+        "pk": 7,
+        "fields": {
+            "customer": 7,
+            "location": 7
+        }
+    },
+    {
+        "model": "mcpressureapi.customerlocation",
+        "pk": 8,
+        "fields": {
+            "customer": 8,
+            "location": 8
+        }
+    },
+    {
+        "model": "mcpressureapi.customerlocation",
+        "pk": 9,
+        "fields": {
+            "customer": 9,
+            "location": 9
+        }
+    },
+    {
+        "model": "mcpressureapi.customerlocation",
+        "pk": 10,
+        "fields": {
+            "customer": 10,
+            "location": 10
+        }
+    },
+    {
+        "model": "mcpressureapi.customerlocation",
+        "pk": 11,
+        "fields": {
+            "customer": 4,
+            "location": 12
+        }
+    },
+    {
+        "model": "mcpressureapi.customerlocation",
+        "pk": 12,
         "fields": {
             "customer": 1,
-            "location": 1
+            "location": 11
         }
     }
 ]
