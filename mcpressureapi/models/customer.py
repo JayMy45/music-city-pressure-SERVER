@@ -5,7 +5,8 @@ from django.contrib.auth.models import User
 class Customer(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     phone_number = PhoneField(blank=True, help_text='Contact phone number')
-    address = models.ManyToManyField('Location', blank=True, through='CustomerLocation')
+    address = models.CharField(max_length=200)    
+    location = models.ManyToManyField('Location', blank=True, through='CustomerLocation')
 
     @property
     def full_name(self):

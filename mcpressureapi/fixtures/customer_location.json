@@ -1,0 +1,50 @@
+[
+    {
+        "model": "mcpressureapi.customerlocation",
+        "pk": 1,
+        "fields": {
+            "customer": 1,
+            "location": 1
+        }
+    },
+    {
+        "model": "mcpressureapi.customerlocation",
+        "pk": 1,
+        "fields": {
+            "customer": 1,
+            "location": 1
+        }
+    },
+    {
+        "model": "mcpressureapi.customerlocation",
+        "pk": 1,
+        "fields": {
+            "customer": 1,
+            "location": 1
+        }
+    },
+    {
+        "model": "mcpressureapi.customerlocation",
+        "pk": 1,
+        "fields": {
+            "customer": 1,
+            "location": 1
+        }
+    },
+    {
+        "model": "mcpressureapi.customerlocation",
+        "pk": 1,
+        "fields": {
+            "customer": 1,
+            "location": 1
+        }
+    },
+    {
+        "model": "mcpressureapi.customerlocation",
+        "pk": 1,
+        "fields": {
+            "customer": 1,
+            "location": 1
+        }
+    }
+]

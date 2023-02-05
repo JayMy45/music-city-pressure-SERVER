@@ -1,0 +1,51 @@
+[
+    {
+        "model": "mcpressureapi.city",
+        "pk": 1,
+        "fields": {
+            "name": "Brentwood"
+        }
+    },
+    {
+        "model": "mcpressureapi.city",
+        "pk": 2,
+        "fields": {
+            "name": "Nashville"
+        }
+    },
+    {
+        "model": "mcpressureapi.city",
+        "pk": 3,
+        "fields": {
+            "name": "Hendersonville"
+        }
+    },
+    {
+        "model": "mcpressureapi.city",
+        "pk": 4,
+        "fields": {
+            "name": "Antioch"
+        }
+    },
+    {
+        "model": "mcpressureapi.city",
+        "pk": 5,
+        "fields": {
+            "name": "Franklin"
+        }
+    },
+    {
+        "model": "mcpressureapi.city",
+        "pk": 6,
+        "fields": {
+            "name": "Madison"
+        }
+    },
+    {
+        "model": "mcpressureapi.city",
+        "pk": 7,
+        "fields": {
+            "name": "Hermitage"
+        }
+    }
+]

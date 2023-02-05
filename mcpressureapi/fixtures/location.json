@@ -3,7 +3,96 @@
         "model": "mcpressureapi.location",
         "pk": 1,
         "fields": {
-            "label": "Brentwood"
+            "street": "1544 RoundWay Rd.",
+            "city": 2
+        }
+    },
+    {
+        "model": "mcpressureapi.location",
+        "pk": 2,
+        "fields": {
+            "street": "222 Brompton Rd.",
+            "city": 3
+        }
+    },
+    {
+        "model": "mcpressureapi.location",
+        "pk": 3,
+        "fields": {
+            "street": "353 Rich's Way",
+            "city": 1
+        }
+    },
+    {
+        "model": "mcpressureapi.location",
+        "pk": 4,
+        "fields": {
+            "street": "320 Congaree Ch. Rd.",
+            "city": 1
+        }
+    },
+    {
+        "model": "mcpressureapi.location",
+        "pk": 5,
+        "fields": {
+            "street": "245 Circles Way",
+            "city": 7
+        }
+    },
+    {
+        "model": "mcpressureapi.location",
+        "pk": 6,
+        "fields": {
+            "street": "221 Merc Edes",
+            "city": 5
+        }
+    },
+    {
+        "model": "mcpressureapi.location",
+        "pk": 7,
+        "fields": {
+            "street": "123 Fugee La",
+            "city": 4
+        }
+    },
+    {
+        "model": "mcpressureapi.location",
+        "pk": 8,
+        "fields": {
+            "street": "123 Co Aksle",
+            "city": 6
+        }
+    },
+    {
+        "model": "mcpressureapi.location",
+        "pk": 9,
+        "fields": {
+            "street": "213 Star Buck St.",
+            "city": 2
+        }
+    },
+    {
+        "model": "mcpressureapi.location",
+        "pk": 10,
+        "fields": {
+            "street": "345 Bad Axe Rd.",
+            "city": 1
+        }
+    },
+    {
+        "model": "mcpressureapi.location",
+        "pk": 11,
+        "fields": {
+            "street": "123 Moxy Ave.",
+            "city": 4
+        }
+    },
+    {
+        "model": "mcpressureapi.location",
+        "pk": 12,
+        "fields": {
+            "street": "353 Rich's Way",
+            "city": 7
         }
     }
 ]
