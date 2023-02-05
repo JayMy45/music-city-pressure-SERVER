@@ -7,3 +7,5 @@ from .employee_view import EmployeeView
 from .equipment_view import EquipmentView
 from .progress_view import ProgressView
 from .specialty_view import SpecialtyView
+from .location_view import LocationView
+from .city_view import CityView

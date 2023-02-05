@@ -17,7 +17,18 @@ from django.contrib import admin
 from django.conf.urls import include
 from django.urls import path
 from rest_framework import routers
-from mcpressureapi.views import register_user, login_user, AppointmentView, ServiceTypeView, CustomerView, EmployeeView, EquipmentView, ProgressView, SpecialtyView
+from mcpressureapi.views import (register_user, 
+                                    login_user, 
+                                    AppointmentView, 
+                                    ServiceTypeView, 
+                                    CustomerView, 
+                                    EmployeeView, 
+                                    EquipmentView, 
+                                    ProgressView, 
+                                    SpecialtyView,
+                                    LocationView,
+                                    CityView
+                                    )
 
 
 router = routers.DefaultRouter(trailing_slash=False)
@@ -28,6 +39,8 @@ router.register(r'employees', EmployeeView, 'employee')
 router.register(r'equipments', EquipmentView, 'equipment')
 router.register(r'progression', ProgressView, 'progress')
 router.register(r'specialties', SpecialtyView, 'specialty')
+router.register(r'locations', LocationView, 'location')
+router.register(r'cities', CityView, 'city')
 
 urlpatterns = [
     path('register', register_user),

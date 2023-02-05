@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from rest_framework import serializers, status
 from rest_framework.decorators import action
 from django.contrib.auth.models import User
-from mcpressureapi.models import Customer
+from mcpressureapi.models import Customer, City, Location
 
 class CustomerView(ViewSet):
     """Get request to get all Customers
@@ -65,10 +65,21 @@ class UserSerializer(serializers.ModelSerializer):
         model =  User
         fields = ('id','is_staff', 'email',)
 
+class CitySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = City
+        fields = ('id', 'name',)
+
+class LocationSerializer(serializers.ModelSerializer):
+    city = CitySerializer(many=False)
+    class Meta:
+        model = Location
+        fields = ('id', 'street', 'city',)
 
 class CustomerSerializer(serializers.ModelSerializer):
     user = UserSerializer(many=False)
+    location = LocationSerializer(many=True)
     full_name = serializers.ReadOnlyField()
     class Meta:
         model =  Customer
-        fields = ('id','full_name', 'address', 'phone_number', 'user', )
+        fields = ('id','full_name', 'address', 'location', 'phone_number', 'image','user', )
