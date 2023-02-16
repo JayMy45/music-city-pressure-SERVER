@@ -20,6 +20,22 @@ class LocationView(ViewSet):
         serialized = LocationSerializer(location, many=True)
         return Response(serialized.data, status=status.HTTP_200_OK)
 
+
+    def retrieve(self, request, pk=None):
+            """Handle GET requests for single location 
+
+            Returns:
+                Response -- JSON serialized location
+            """
+
+            try:
+                location = Location.objects.get(pk=pk)
+            except Location.DoesNotExist:
+                return Response({"message": "The location you specified does not exist"}, status = status.HTTP_404_NOT_FOUND)
+
+            serialized = LocationSerializer(location, context={'request': request})
+            return Response(serialized.data, status=status.HTTP_200_OK)
+
 class CitySerializer(serializers.ModelSerializer):
     class Meta:
         model = City
