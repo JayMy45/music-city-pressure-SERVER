@@ -36,21 +36,6 @@ class LocationView(ViewSet):
             serialized = LocationSerializer(location, context={'request': request})
             return Response(serialized.data, status=status.HTTP_200_OK)
 
-    
-    def create(self, request):
-        city_pk = request.data["city"]
-        try:
-            city_instance = City.objects.get(pk=city_pk)
-        except City.DoesNotExist:
-            # If the city doesn't exist, create a new City instance
-            city_instance = City.objects.create(pk=city_pk)
-
-        location = Location.objects.create(
-            street=request.data["street"],
-            city=city_instance
-        )
-        serialized = LocationSerializer(location, many=False)
-        return Response(serialized.data, status=status.HTTP_201_CREATED)
 
     
     def destroy(self, request, pk):
